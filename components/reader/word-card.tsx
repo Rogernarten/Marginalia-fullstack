@@ -5,6 +5,7 @@ import { NoteEditor } from "@/components/notebook/note-editor";
 import { Button, LinkButton } from "@/components/ui/button";
 import { cx, FOCUS } from "@/components/ui/cx";
 import { showInNotebook } from "@/components/notebook/arrival";
+import { WikiSummary } from "@/components/notebook/wiki-summary";
 import { restoreWord, type Word } from "@/lib/storage";
 
 /**
@@ -91,10 +92,22 @@ export function WordCard({
         </div>
       ) : (
         <>
+          {word.wiki && (
+            <div className="mt-3">
+              <WikiSummary page={word.wiki} id={`saved-${word.id}-wiki`} />
+            </div>
+          )}
           {word.myNote ? (
-            <p className="mt-3 font-serif text-lg leading-relaxed">{word.myNote}</p>
+            word.wiki ? (
+              <div className="mt-4 rounded-md bg-paper px-3 py-2.5">
+                <h3 className="eyebrow">Your note</h3>
+                <p className="mt-1 font-serif text-base leading-relaxed">{word.myNote}</p>
+              </div>
+            ) : (
+              <p className="mt-3 font-serif text-lg leading-relaxed">{word.myNote}</p>
+            )
           ) : (
-            <p className="mt-3 text-[0.9375rem] text-muted">No note yet.</p>
+            !word.wiki && <p className="mt-3 text-[0.9375rem] text-muted">No note yet.</p>
           )}
           <div className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-3">
             <Button ref={editButton} variant="secondary" onClick={() => setEditing(true)}>

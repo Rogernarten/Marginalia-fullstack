@@ -1,3 +1,4 @@
+import { auth } from "@clerk/nextjs/server";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { AddWordForm } from "@/components/notebook/add-word-form";
@@ -5,7 +6,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export const metadata: Metadata = { title: "Save a word" };
 
-export default function NewWordPage() {
+export default async function NewWordPage() {
+  await auth.protect();
   return (
     <div className="mx-auto max-w-[62rem] px-5 py-8 lg:py-12">
       <div className="max-w-[32rem]">

@@ -34,7 +34,7 @@ export function HomeGate({ paragraphs, notes }: { paragraphs: string[]; notes: N
             <h1 className="mt-2 font-serif text-3xl leading-tight lg:text-4xl">Read it with a guide in the margin.</h1>
             <p className="mt-3 text-[1.0625rem] leading-relaxed text-muted">
               Tap an underlined word to see what it meant in 1813, and save the ones you want to keep.
-              It all stays on this device. No account needed.
+              Sign in to keep a notebook that follows you to any device.
             </p>
           </header>
           <Reader

@@ -1,5 +1,6 @@
 "use client";
 
+import { Show, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSaved } from "@/lib/storage";
@@ -58,9 +59,31 @@ export function SiteNav() {
                 )}
               </NavLink>
             </li>
+            <li className="flex min-w-11 justify-end">
+              <Show when="signed-out">
+                <NavLink href="/sign-in" current={section("/sign-in")}>
+                  Sign in
+                </NavLink>
+              </Show>
+              <Show when="signed-in">
+                {/* Avatar menu: manage account and sign out. */}
+                <div className="flex min-h-11 items-center px-2 sm:px-3">
+                  <UserButton />
+                </div>
+              </Show>
+            </li>
           </ul>
         </nav>
       </div>
+    </header>
+  );
+}
+
+/** Same height as the nav, for pages whose URL isn't known until the request (sign-in). */
+export function SiteNavShell() {
+  return (
+    <header className="border-b border-rule">
+      <div className="mx-auto min-h-[3.75rem] max-w-[62rem] px-4 py-2 sm:px-5" />
     </header>
   );
 }

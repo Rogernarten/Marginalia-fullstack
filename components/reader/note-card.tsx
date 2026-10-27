@@ -1,8 +1,10 @@
 "use client";
 
+import { useAuth } from "@clerk/nextjs";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { NoteEditor } from "@/components/notebook/note-editor";
-import { Button } from "@/components/ui/button";
+import { Button, LinkButton } from "@/components/ui/button";
 import { cx, FOCUS } from "@/components/ui/cx";
 import { KIND_LABEL, MORE_LABEL, type Note } from "@/lib/notes/types";
 import { addWord, findWord, removeWord, restoreWord, useSaved, type Word } from "@/lib/storage";
@@ -24,6 +26,8 @@ export function NoteCard({
   onClose: () => void;
 }) {
   const saved = useSaved();
+  const { isSignedIn } = useAuth();
+  const path = usePathname();
   const [more, setMore] = useState(false);
   const [editing, setEditing] = useState(false);
   // Kept after Remove so Undo can put the word back with its note.
@@ -165,8 +169,12 @@ export function NoteCard({
               Undo
             </Button>
           </>
+        ) : isSignedIn ? (
+          <Button onClick={save} disabled={!saved}>
+            Save to notebook
+          </Button>
         ) : (
-          <Button onClick={save}>Save to notebook</Button>
+          <LinkButton href={`/sign-in?redirect_url=${encodeURIComponent(path)}`}>Sign in to save</LinkButton>
         )}
       </div>
       <p role="status" className="sr-only">
