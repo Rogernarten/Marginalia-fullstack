@@ -91,7 +91,7 @@ reading on the same day add up instead of overwriting each other.
 Stays out of Supabase: the half-typed add-word form (`draft`, localStorage, cleared on sign-out),
 the book and the hints (static files), and Wikipedia results that weren't saved.
 
-Code: `supabase/migrations/20261027100000_create_marginalia_tables.sql` creates all of this;
+Code: `supabase/migrations/20261027185911_create_marginalia_tables.sql` creates all of this;
 `lib/storage.ts` is the only code that reads or writes it, straight from the browser with the
 Clerk session token (`accessToken` option). Its notebook and reading-day queries never filter by
 user: row-level security alone decides, so the Playwright test catches a broken policy.
@@ -104,10 +104,12 @@ hidden. Reading position is sent at most every 10 seconds and when the tab is hi
 - RLS is on for every table. Each table has four policies (select, insert, update, delete) for
   the `authenticated` role, all `(select auth.jwt() ->> 'sub') = user_id`. Signed-out (`anon`)
   requests match no policy and see nothing.
+- Table privileges: `anon` has none; `authenticated` has only select, insert, update and delete.
+  Supabase's defaults grant more (`truncate` skips RLS), so a new table revokes the rest.
 - Clerk is connected through Supabase's third-party auth; the Supabase client sends the Clerk
   session token.
 - Schema changes are migrations in `supabase/migrations/`, applied through the Supabase MCP.
-  Never turn off RLS or widen a policy unless the human asks for it.
+  Name the file with the version the MCP records (`list_migrations`). Never turn off RLS or widen a policy unless the human asks for it.
 
 ## Wikipedia
 
