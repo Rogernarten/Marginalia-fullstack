@@ -254,7 +254,7 @@ export function AddWordForm() {
         />
         <div className="flex flex-wrap items-center gap-4 pt-2">
           <Button type="submit">{checking ? `Checking Chapter ${values.chapter}…` : "Save to notebook"}</Button>
-          <span className="font-sans text-sm text-muted">Saved on this device only.</span>
+          <span className="font-sans text-sm text-muted">Saved to your account.</span>
         </div>
       </form>
     </>

@@ -91,6 +91,11 @@ reading on the same day add up instead of overwriting each other.
 Stays out of Supabase: the half-typed add-word form (`draft`, localStorage, cleared on sign-out),
 the book and the hints (static files), and Wikipedia results that weren't saved.
 
+Code: `supabase/migrations/20261027100000_create_marginalia_tables.sql` creates all of this;
+`lib/storage.ts` is the only code that reads or writes it, straight from the browser with the
+Clerk session token (`accessToken` option). Its notebook and reading-day queries never filter by
+user: row-level security alone decides, so the Playwright test catches a broken policy.
+
 Writes: reading time is counted locally and sent at most once a minute and when the tab is
 hidden. Reading position is sent at most every 10 seconds and when the tab is hidden.
 
