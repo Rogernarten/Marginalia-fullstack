@@ -19,8 +19,8 @@ pick up where they stopped and keep a weekly reading goal. Flows live in `flows.
 
 - Next.js and Tailwind CSS. Clerk for sign-in. Supabase (Postgres) for saved data. One external
   API: the Wikipedia REST summary, `https://en.wikipedia.org/api/rest_v1/page/summary/{title}`.
-- Allowed new packages: `@clerk/nextjs`, `@supabase/supabase-js`, `@playwright/test`. Push back
-  on anything else.
+- Allowed new packages: `@clerk/nextjs`, `@supabase/supabase-js`, `@playwright/test`,
+  `@clerk/testing`. Push back on anything else.
 - Clerk stays on development keys. Deployed on Vercel's Hobby plan.
 
 ## Constraints
@@ -106,6 +106,12 @@ hidden. Reading position is sent at most every 10 seconds and when the tab is hi
 
 ## Wikipedia
 
+- Called only from our server: the reader's "Look it up" → `GET /api/lookup?q=` →
+  `lib/wikipedia.ts` → Wikipedia. Why there: it's for signed-in readers only (so it isn't an
+  open proxy), it sends a `User-Agent` (browsers can't set one), and each title is cached for
+  a day for every reader (`"use cache"`, `cacheLife("days")`), so Wikipedia's rate limits are
+  never a worry. Failures are never cached. The browser gives up after 8 seconds, the server
+  after 5.
 - Use it for things, customs and places (curricle, entail, Pemberley). It's wrong for words that
   changed meaning (want → a philosophy article, tolerable → "Toleration"); those stay with the
   hand-written hints and the reader's own note.

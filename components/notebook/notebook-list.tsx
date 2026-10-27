@@ -9,6 +9,7 @@ import { KIND_LABEL } from "@/lib/notes/types";
 import { positionHref, removeWord, restoreWord, useSaved, type Word } from "@/lib/storage";
 import { arrivalWord, clearArrival } from "./arrival";
 import { NoteEditor } from "./note-editor";
+import { WikiSummary } from "./wiki-summary";
 
 /** Words grouped by chapter, in reading order. Removing leaves an Undo in the word's place. */
 export function NotebookList() {
@@ -57,7 +58,7 @@ export function NotebookList() {
         <div>
           <h1 className="font-serif text-3xl">Notebook</h1>
           {count > 0 && (
-            <p className="mt-2 text-muted">{`${count} ${count === 1 ? "word" : "words"}, saved on this device.`}</p>
+            <p className="mt-2 text-muted">{`${count} ${count === 1 ? "word" : "words"}`}</p>
           )}
         </div>
         {words.length > 0 && <LinkButton href="/notebook/new">+ Add a word</LinkButton>}
@@ -150,8 +151,14 @@ function Entry({ word, onRemove }: { word: Word; onRemove: () => void }) {
       <div className="flex items-baseline justify-between gap-3">
         <h3 className="font-serif text-xl">{word.phrase}</h3>
         {note && <span className="eyebrow shrink-0">{KIND_LABEL[note.kind]}</span>}
+        {word.wiki && <span className="eyebrow shrink-0">Wikipedia</span>}
       </div>
       {note && <p className="mt-1.5 font-serif text-[1.0625rem] leading-relaxed">{note.short}</p>}
+      {word.wiki && (
+        <div className="mt-1.5">
+          <WikiSummary page={word.wiki} id={`word-${word.id}-wiki`} />
+        </div>
+      )}
       <blockquote className="mt-3 border-l-2 border-rule pl-3 font-serif text-[1.0625rem] leading-relaxed text-muted">
         <Highlighted sentence={word.sentence} phrase={word.phrase} />
       </blockquote>

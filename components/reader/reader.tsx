@@ -9,12 +9,15 @@ import { toRuns } from "@/lib/text";
 import { AddWordButton } from "./add-word-button";
 import { ChapterNav } from "./chapter-nav";
 import { Legend } from "./legend";
+import { LookupCard } from "./lookup-card";
+import { LookUpButton } from "./look-up-button";
 import { NoteCard } from "./note-card";
 import { arrivalTarget, jumpTo, useReadingPosition, useReadingTimer } from "./reading-position";
 import { useMediaQuery } from "./use-media-query";
 import { WordCard } from "./word-card";
 
 const SAVED = "saved-";
+const LOOKUP = "lookup";
 
 /**
  * A chapter with its underlined words (guide notes) and shaded words (ones the reader saved
@@ -68,13 +71,15 @@ export function Reader({
     return map;
   }, [notes]);
   const activeNote = notes.find((n) => n.id === activeId) ?? null;
+  // What "Look it up" was opened with; a new count each time so the card starts fresh.
+  const [lookup, setLookup] = useState<{ text: string; paragraph: number | null; n: number } | null>(null);
   // A removed word is kept here so its card can offer Undo after it leaves the page.
   const [removed, setRemoved] = useState<Word | null>(null);
   const activeWord = activeId?.startsWith(SAVED)
     ? (saved?.words.find((w) => SAVED + w.id === activeId) ?? (removed && SAVED + removed.id === activeId ? removed : null))
     : null;
   // A boolean, so saving or removing (which changes the word object) doesn't re-run effects.
-  const isOpen = (activeNote ?? activeWord) !== null;
+  const isOpen = (activeNote ?? activeWord) !== null || (activeId === LOOKUP && lookup !== null);
   // Words saved with the form (no note of their own) are shaded where they were found.
   const marks = useMemo(() => {
     const map = new Map<number, { id: string; phrase: string }[]>();
@@ -89,6 +94,11 @@ export function Reader({
     trigger.current = el;
     setActiveId(id);
     setRemoved(null);
+  }
+
+  function openLookup(selection: { text: string; paragraph: number | null }, el: HTMLElement) {
+    setLookup({ ...selection, n: (lookup?.n ?? 0) + 1 });
+    open(LOOKUP, el);
   }
 
   // Back to the word that was opened (re-found if Undo re-created it), or to its paragraph if
@@ -131,7 +141,16 @@ export function Reader({
     return () => document.removeEventListener("keydown", onKey);
   }, [isOpen, wide]);
 
-  const card = activeNote ? (
+  const card = activeId === LOOKUP && lookup ? (
+    <LookupCard
+      key={lookup.n}
+      chapter={chapter}
+      paragraphs={paragraphs}
+      start={lookup}
+      headingRef={headingRef}
+      onClose={close}
+    />
+  ) : activeNote ? (
     <NoteCard
       key={activeNote.id}
       note={activeNote}
@@ -163,7 +182,10 @@ export function Reader({
           ) : (
             <h2 className="font-serif text-2xl">Chapter {chapter}</h2>
           )}
-          <AddWordButton chapter={chapter} />
+          <div className="flex flex-wrap gap-2">
+            <LookUpButton chapter={chapter} onLookUp={openLookup} />
+            <AddWordButton chapter={chapter} />
+          </div>
         </div>
         {resumeAt != null && (
           <Notice className="mb-6 flex flex-wrap items-center justify-between gap-3">
@@ -212,7 +234,9 @@ export function Reader({
               {notes.length > 0 && <Legend className="mt-4" />}
               <p className="mt-4 font-sans text-sm leading-relaxed text-muted">
                 {notes.length > 0 ? "Not underlined? " : "Found a word you don’t know? "}
-                Select it in the text, then choose <strong className="font-semibold text-ink">+ Add a word</strong>.
+                Select it in the text, then choose <strong className="font-semibold text-ink">Look it up</strong> to
+                see it on Wikipedia, or <strong className="font-semibold text-ink">+ Add a word</strong> to save it
+                with your own note.
               </p>
               {notes.length > 0 && (
                 <p className="mt-2 font-sans text-sm text-muted">Using a keyboard? Tab to a word and press Enter.</p>
@@ -226,7 +250,15 @@ export function Reader({
         <dialog
           ref={sheet}
           className="sheet"
-          aria-labelledby={activeNote ? `${activeNote.id}-heading` : activeWord ? `${SAVED}${activeWord.id}-heading` : undefined}
+          aria-labelledby={
+            activeId === LOOKUP
+              ? "lookup-heading"
+              : activeNote
+                ? `${activeNote.id}-heading`
+                : activeWord
+                  ? `${SAVED}${activeWord.id}-heading`
+                  : undefined
+          }
           onClose={() => activeId && close()}
           onClick={(e) => e.target === e.currentTarget && close()}
         >

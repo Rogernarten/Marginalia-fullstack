@@ -1,5 +1,6 @@
 import { useSyncExternalStore } from "react";
 import { normalize } from "./text";
+import type { WikiPage } from "./wikipedia";
 
 // Everything a reader saves lives under one localStorage key. Components read it with
 // useSaved() and change it only through the actions below.
@@ -15,6 +16,8 @@ export type Word = {
   sentence: string;
   /** Set when saved from a hint, so the notebook can show it. */
   noteId?: string;
+  /** Set when saved from a Wikipedia lookup: a copy, so the notebook never has to ask again. */
+  wiki?: WikiPage;
   myNote: string;
   savedAt: string;
 };

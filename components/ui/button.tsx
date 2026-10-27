@@ -47,3 +47,22 @@ export function TextLink({ className, ...props }: React.ComponentProps<typeof Li
     />
   );
 }
+
+/** A link to another site, opened in a new tab so the reader keeps their place. */
+export function ExternalLink({ className, children, ...props }: React.ComponentProps<"a">) {
+  return (
+    <a
+      target="_blank"
+      rel="noreferrer"
+      className={cx(
+        "rounded-sm text-ink underline decoration-edge underline-offset-4 hover:decoration-ink",
+        FOCUS,
+        className,
+      )}
+      {...props}
+    >
+      {children}
+      <span className="sr-only"> (opens in a new tab)</span>
+    </a>
+  );
+}

@@ -20,6 +20,11 @@ flowchart TD
   subgraph task["2 · Main task: save a word"]
     read["/read/N · reading a chapter"] --> under{"Is the word<br/>underlined?"}
     under -- Yes --> margin
+    under -- No --> look["Look it up<br/>Wikipedia in the margin"]
+    look --> found{"Wikipedia"}
+    found -- Found --> wsave["Summary · More · From Wikipedia<br/>Save “curricle” to notebook"]
+    found -- Several meanings --> amb["“Bath” means several things.<br/>Try a more specific phrase"]
+    found -- Nothing / down --> add
     under -- No --> add["+ Add a word<br/>/notebook/new, selected text filled in"]
     add --> form["Form: Word or phrase · Chapter · Your note"]
     form --> check{"Check"}
@@ -54,6 +59,12 @@ flowchart TD
 | Browser can't save (private mode, storage full) | "This browser isn't saving right now, so your words will be gone when you close the tab." |
 | Chapter that doesn't exist (`/read/99`) | "Pride and Prejudice has 61 chapters." and a link to Contents |
 | Saved data can't be read | Start fresh without crashing |
+| Looking up on Wikipedia | Skeleton lines in the margin; screen readers hear “Looking up “curricle” on Wikipedia…” |
+| Wikipedia found it under another name | “Showing “Fee tail” for “entail”.” |
+| Wikipedia: several meanings (`Bath`) | ““Bath” means several things on Wikipedia. Try a more specific phrase…” and a link to the list |
+| Wikipedia: nothing found (`Meryton`) | “Wikipedia has no article on “Meryton”.” and + Add it with my note |
+| Wikipedia down or slow (over 8 s) | “Wikipedia isn't answering right now.” Try again, or save it with your own note |
+| Signed out and choosing Look it up | “Sign in to look things up on Wikipedia and keep them in your notebook.” and Sign in |
 | Missed last week's goal | "Welcome back. New week, fresh start: 0 of 3 days." Continue reading stays on top |
 
 ## Pages
@@ -63,5 +74,7 @@ flowchart TD
 | `/` | First visit (Chapter 1) or Welcome back, decided once on load |
 | `/read` | Contents |
 | `/read/[chapter]` | Reading, with the margin |
-| `/notebook/new` | The form: save a word |
-| `/notebook` | The notebook |
+| `/notebook/new` | The form: save a word (signed in only) |
+| `/notebook` | The notebook (signed in only) |
+| `/sign-in`, `/sign-up` | Clerk's forms |
+| `GET /api/lookup?q=` | Wikipedia summary, signed in only |
