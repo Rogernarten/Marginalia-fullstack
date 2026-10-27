@@ -4,8 +4,8 @@
 doesn't know, see what it meant in 1813, look up anything else on Wikipedia, and save it to your
 notebook. Sign in and your notebook, reading place and weekly goal follow you to any device.
 
-- **Live:** _Vercel URL goes here_
-- **Code:** _GitHub URL goes here_
+- **Live:** https://marginalia-fullstack-eight.vercel.app
+- **Code:** https://github.com/Rogernarten/Marginalia-fullstack
 
 Design, Build, Ship · Assignment 4: Full Stack App, built on Assignment 3 (Patterns & Flows).
 
@@ -14,11 +14,11 @@ Design, Build, Ship · Assignment 4: Full Stack App, built on Assignment 3 (Patt
 | | |
 |---|---|
 | **Accounts** | Clerk: sign up, sign in, sign out. The book and the hand-written hints stay public; the notebook (`/notebook`, `/notebook/new`) and Wikipedia lookups need sign-in, checked on the server with `auth.protect()` in each page and `auth()` in the API route. |
-| **Data** | Supabase: `saved_words`, `reader_state`, `reading_days` ([migration](supabase/migrations/20261027185911_create_marginalia_tables.sql)). Every row has a `user_id`, filled in by the database from the Clerk token's `sub`. Row-level security on every table: four policies each, all `(select auth.jwt() ->> 'sub') = user_id`. |
+| **Data** | Supabase: `saved_words`, `reader_state`, `reading_days` ([migration](supabase/migrations/20261027185911_create_marginalia_tables.sql)). Every row has a `user_id`, filled in by the database from the Clerk token's `sub`. Row-level security on every table: four policies each, all `(select auth.jwt() ->> 'sub') = user_id`. Signed-in readers get only select, insert, update and delete ([second migration](supabase/migrations/20261027193545_limit_reader_table_privileges.sql): Supabase's defaults also allow `truncate`, which skips RLS); signed out gets nothing. |
 | **API** | Wikipedia's REST summary, for things, customs and places (curricle, entail, Pemberley). Select a word, choose **Look it up**. Designed states: loading, found, found under another name, several meanings, nothing found, Wikipedia down, signed out. |
 | **Where the API is called** | On our server, `GET /api/lookup` → [`lib/wikipedia.ts`](lib/wikipedia.ts): signed-in only so it isn't an open proxy, it sends the `User-Agent` Wikimedia asks for (browsers can't), and each title is cached for a day for every reader. |
 | **Keys** | In `.env.local` and Vercel's environment variables only. [`.claude/settings.json`](.claude/settings.json) denies the agent `Read` and `Edit` on `.env` files. The browser gets only publishable keys; the Supabase secret key isn't used at all. |
-| **Test** | [`e2e/notebook-privacy.spec.ts`](e2e/notebook-privacy.spec.ts): two readers each save a word; each notebook, loaded fresh, shows only its own. |
+| **Test** | [`e2e/notebook-privacy.spec.ts`](e2e/notebook-privacy.spec.ts): two readers each save a word; each notebook, loaded fresh, shows only its own. Watched it catch a broken policy: with the select policy changed to `using (true)` in the SQL Editor, it fails on "Reader A must not see reader B's word"; with the policy restored, it passes. |
 
 ### One save, traced
 

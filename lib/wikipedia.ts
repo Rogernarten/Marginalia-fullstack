@@ -29,8 +29,9 @@ export type Lookup =
 export const QUERY_MAX = 80;
 
 const ENDPOINT = "https://en.wikipedia.org/api/rest_v1/page/summary/";
-// Wikimedia asks every client to say who it is.
-const USER_AGENT = "Marginalia/1.0 (Design, Build, Ship class project, University of Chicago)";
+// Wikimedia asks every client to say who it is and how to reach whoever runs it.
+const USER_AGENT =
+  "Marginalia/1.0 (https://github.com/Rogernarten/Marginalia-fullstack; Design, Build, Ship class project, University of Chicago)";
 const TIMEOUT_MS = 5000;
 
 /** "pin  money" → "pin_money". Returns null for empty or overlong input. */
