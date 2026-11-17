@@ -1,5 +1,6 @@
 "use client";
 
+import { useAuth } from "@clerk/nextjs";
 import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Notice } from "@/components/ui/notice";
@@ -8,6 +9,7 @@ import { findWord, removeWord, useSaved, type Word } from "@/lib/storage";
 import { toRuns } from "@/lib/text";
 import { AddWordButton } from "./add-word-button";
 import { ChapterNav } from "./chapter-nav";
+import { takeExplain } from "./explain-after-sign-in";
 import { ExplainButton } from "./explain-button";
 import { ExplainCard } from "./explain-card";
 import { Legend } from "./legend";
@@ -49,6 +51,7 @@ export function Reader({
   resumable?: boolean;
 }) {
   const saved = useSaved();
+  const { isSignedIn } = useAuth();
   const wide = useMediaQuery("(min-width: 64rem)");
   const [activeId, setActiveId] = useState<string | null>(null);
   const trigger = useRef<HTMLElement | null>(null);
@@ -132,6 +135,25 @@ export function Reader({
   useEffect(() => {
     closeRef.current = close;
   });
+
+  // Back from signing in (or up) to explain something: the same paragraph, with the card open
+  // and explaining. Taken inside the frame, so React's second mount in development gets it.
+  useEffect(() => {
+    if (!isSignedIn) return;
+    const frame = requestAnimationFrame(() => {
+      const pending = takeExplain(chapter);
+      if (!pending) return;
+      jumpTo(chapter, pending.paragraph);
+      const el = [...document.querySelectorAll<HTMLElement>(`[data-chapter="${chapter}"] [data-paragraph="${pending.paragraph}"]`)].find(
+        (e) => e.checkVisibility(),
+      );
+      setExplaining((prev) => ({ ...pending, n: (prev?.n ?? 0) + 1 }));
+      trigger.current = el ?? null;
+      setActiveId(EXPLAIN);
+      setRemoved(null);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [isSignedIn, chapter]);
 
   // Show or hide the bottom sheet, and move focus to the note's heading.
   useEffect(() => {

@@ -33,8 +33,9 @@ export function HomeGate({ paragraphs, notes }: { paragraphs: string[]; notes: N
             <p className="eyebrow">Pride and Prejudice · Jane Austen · 1813</p>
             <h1 className="mt-2 font-serif text-3xl leading-tight lg:text-4xl">Read it with a guide in the margin.</h1>
             <p className="mt-3 text-[1.0625rem] leading-relaxed text-muted">
-              Tap an underlined word to see what it meant in 1813, and save the ones you want to keep.
-              Sign in to keep a notebook that follows you to any device.
+              Tap an underlined word to see what it meant in 1813. Stuck on anything else? Select a word
+              or a line and choose <strong className="font-semibold text-ink">Explain</strong> to see
+              what it means in that sentence. Sign in to explain and keep a notebook on any device.
             </p>
           </header>
           <Reader
