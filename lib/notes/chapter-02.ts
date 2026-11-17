@@ -7,7 +7,7 @@ export const chapter02: Note[] = [
     phrase: "waited on",
     kind: "word",
     short: "Paid a formal visit to.",
-    more: "To wait on someone here means to call on them, not to serve them. So Mr. Bennet did visit after all, as Chapter 1 hinted, and simply didn't tell anyone.",
+    more: "To wait on someone here means to call on them, not to serve them. So Mr. Bennet did visit after all, as Chapter 1 hinted, while telling his wife he wouldn't.",
   },
   {
     id: "c2-trimming",
@@ -15,7 +15,7 @@ export const chapter02: Note[] = [
     phrase: "trimming a hat",
     kind: "context",
     short: "Decorating a hat with ribbons, lace or flowers, a common home craft.",
-    more: "Women often bought plain hats and bonnets and trimmed them themselves, changing the trimming to suit the season or a party. In Chapter 39, Lydia buys an ugly bonnet just to pull it apart and make it up again.",
+    more: "Women often bought plain hats and bonnets and trimmed them themselves, changing the trimming to suit the season or a party. It was cheap, sociable work, done at home.",
   },
   {
     id: "c2-assemblies",
@@ -23,7 +23,7 @@ export const chapter02: Note[] = [
     phrase: "the assemblies",
     kind: "context",
     short: "Public balls held in the town's assembly rooms.",
-    more: "Local gentry bought tickets to dances in a public hall, so an assembly was the one place a newcomer could meet the whole neighbourhood at once. The Meryton assembly in Chapter 3 is where Elizabeth first sees Mr. Darcy.",
+    more: "Local gentry bought tickets to dances in a public hall, so an assembly was the one place a newcomer could meet the whole neighbourhood at once, and be introduced properly.",
   },
   {
     id: "c2-deigned",
@@ -111,7 +111,7 @@ export const chapter02: Note[] = [
     phrase: "stoutly",
     kind: "word",
     short: "Boldly and firmly, not “fatly.”",
-    more: "Stout first meant brave or strong, as in “stout-hearted.” The sense of heavy-set came later. Lydia's confidence is the point, and it will matter later in the book.",
+    more: "Stout first meant brave or strong, as in “stout-hearted.” The sense of heavy-set came later. Lydia, the youngest, answers with full confidence.",
   },
   {
     id: "c2-conjecturing",

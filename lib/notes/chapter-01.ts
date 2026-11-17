@@ -6,8 +6,8 @@ export const chapter01: Note[] = [
     paragraph: 0,
     phrase: "truth universally acknowledged",
     kind: "context",
-    short: "A grand opening that is really a joke: the “truth” is what local mothers want to believe.",
-    more: "The sentence sounds like philosophy, but the next paragraph gives the game away. It is the neighbouring families, with daughters to marry off, who decide that a rich newcomer must want a wife. Austen's narrator often says the opposite of what she means; reading for that irony is half the fun of the book.",
+    short: "A grand opening that is really a joke: this “truth” is gossip, not philosophy.",
+    more: "The sentence sounds like a law of nature, but it is gossip dressed up as philosophy, and the narrator knows it. Austen's narrator often says the opposite of what she means; reading for that irony is half the fun of the book.",
   },
   {
     id: "c1-fortune",
@@ -47,7 +47,7 @@ export const chapter01: Note[] = [
     phrase: "a young man of large fortune from the north of England",
     kind: "context",
     short: "Rich, and from the north, where many new fortunes came from trade.",
-    more: "The mills and trade of northern England were making new money in Austen's day. Chapter 4 confirms it: the Bingleys' fortune “had been acquired by trade,” a fact his sisters would rather forget. Bingley is renting an estate, not inheriting one, which is how new money became landed gentry.",
+    more: "The mills and trade of northern England were making new money in Austen's day, and old landed families looked down on fortunes made that way. Renting a great country house, as this young man is doing, was one way new money moved into the gentry.",
   },
   {
     id: "c1-chaise",
@@ -71,7 +71,7 @@ export const chapter01: Note[] = [
     phrase: "four or five thousand a year",
     kind: "context",
     short: "His yearly income, enough to make him one of the richest men around.",
-    more: "Incomes were quoted per year, from capital invested at about four or five per cent, so this suggests a fortune near £100,000. For scale: Mr. Bennet's estate brings in £2,000 a year, and in Chapter 3 the room hears that Mr. Darcy has £10,000.",
+    more: "Incomes were quoted per year, from capital invested at about four or five per cent, so this suggests a fortune near £100,000. Many gentry families lived on well under £1,000 a year, so this is great wealth.",
   },
   {
     id: "c1-tiresome",
@@ -119,7 +119,7 @@ export const chapter01: Note[] = [
     phrase: "Sir William and Lady Lucas",
     kind: "context",
     short: "A knight and his wife: an honour for him, not a title his son inherits.",
-    more: "Chapter 5 explains that Sir William made his money in trade and was knighted while mayor of the local town. “Sir” is personal and ends with him. The Lucases are the Bennets' nearest neighbours, and their daughter Charlotte is Elizabeth's closest friend.",
+    more: "“Sir” before a first name marks a knight. A knighthood was often given for public service, and it is personal: it ends with him, and his son will be plain Mr. Lucas. “Lady Lucas” is the courtesy title of a knight's wife.",
   },
   {
     id: "c1-scrupulous",
@@ -135,7 +135,7 @@ export const chapter01: Note[] = [
     phrase: "quickness",
     kind: "word",
     short: "Quickness of mind: sharpness and wit.",
-    more: "Austen's quick often means lively or clever, as in quick-witted. Mr. Bennet singles out Elizabeth, and the book will prove him right. Compare “quick parts” at the end of this chapter.",
+    more: "Austen's quick often means lively or clever, as in quick-witted, not fast. Here Mr. Bennet singles Elizabeth out for it among his daughters.",
   },
   {
     id: "c1-nerves",
@@ -143,7 +143,7 @@ export const chapter01: Note[] = [
     phrase: "my poor nerves",
     kind: "context",
     short: "Her “nerves”: a fashionable complaint of anxiety and agitation.",
-    more: "Doctors of the period blamed many moods on weak nerves, and complaining of them was a respectable way to ask for sympathy. Mr. Bennet's reply, that her nerves are his “old friends,” is pure teasing.",
+    more: "Doctors of the period blamed many moods on weak nerves, and complaining of them was a respectable way to ask for sympathy. Here she uses them to scold her husband for teasing her.",
   },
   {
     id: "c1-quick-parts",
