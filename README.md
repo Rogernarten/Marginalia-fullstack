@@ -1,7 +1,7 @@
 # Marginalia
 
 **Read *Pride and Prejudice* with a guide in the margin.** Select any word or line you don't
-understand and choose **Explain**: the margin says what it means in that sentence, as Austen
+understand and choose **AI explain**: the margin says what it means in that sentence, as Austen
 used it, with where that came from, and never gives away what happens next. Save it to a
 notebook that follows you to any device. Underlined words have hand-written notes too.
 
@@ -15,13 +15,13 @@ The proposal set the core task:
 > understand, reads an explanation that fits that sentence without leaving the page, and saves
 > it to their notebook.
 
-## Project v1: Explain in the margin
+## Project v1: AI explain in the margin
 
 ### The core task, start to finish
 
-1. **Select** a word or a line in the text. A small toolbar appears next to it: **Explain**,
-   **Look it up**, **Save**.
-2. **Explain**. Signed out, the margin offers **Create an account** and brings you back to the
+1. **Select** a word or a line in the text. A small toolbar appears next to it: **AI explain**,
+   **Wiki lookup**, **Save**.
+2. **AI explain**. Signed out, the margin offers **Create an account** and brings you back to the
    same paragraph with the words explained. Signed in, it answers in a few seconds.
 3. **Read** it in the margin (a bottom sheet on phones): one line of meaning, up to two
    sentences of background, and its sources: the sentence itself, a Wikipedia article, or an
@@ -33,7 +33,7 @@ The proposal set the core task:
 
 ```mermaid
 flowchart LR
-  SEL["Reader selects words<br/>toolbar → Explain"] --> API["POST /api/explain<br/>signed in?<br/>is the selection in that paragraph?"]
+  SEL["Reader selects words<br/>toolbar → AI explain"] --> API["POST /api/explain<br/>signed in?<br/>is the selection in that paragraph?"]
   API --> CACHE{"Explained before?<br/>use cache: remote"}
   CACHE -- yes --> CARD
   CACHE -- no --> CORE["lib/explain/core.ts<br/>Claude Haiku 5.5"]
@@ -116,10 +116,11 @@ from the same paragraph.
 
 | Got stuck | Changed |
 |---|---|
-| The home page only said "Tap an underlined word"; nothing said any other words could be explained | "Stuck on anything else? Select a word or a line and choose **Explain**" |
+| The home page only said "Tap an underlined word"; nothing said any other words could be explained | "Stuck on anything else? Select a word or a line and choose **AI explain**" |
 | Signed out, Explain offered only "Sign in", to someone with no account | **Create an account** first, with "you'll come back right here, with '…' explained" |
 | After signing up: back at the top of the page, selection gone, card closed | Back at the same paragraph (`#p-N`) with the card open and the words explained |
 | Explain and Look it up were buttons above the text: select first, then go back up to press one | A toolbar right at the selection: above it, or below it on phones, where the phone's own menu sits above |
+| "Explain" and "Look it up" didn't say where the answer comes from: a model or Wikipedia | Renamed **AI explain** and **Wiki lookup** |
 
 ### Testing with readers
 

@@ -106,7 +106,7 @@ export function LookupCard({
         tabIndex={-1}
         className="mt-1 rounded-sm font-serif text-2xl leading-snug focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
       >
-        Look it up
+        Wiki lookup
       </h2>
 
       {!isLoaded ? (

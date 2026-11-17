@@ -98,7 +98,7 @@ export function ExplainCard({
   return (
     <section aria-labelledby="explain-heading" className="font-sans">
       <div className="flex items-center justify-between gap-3">
-        <p className="eyebrow">Explain</p>
+        <p className="eyebrow">AI explain</p>
         <button
           type="button"
           onClick={onClose}
@@ -114,7 +114,7 @@ export function ExplainCard({
         tabIndex={-1}
         className="mt-1 rounded-sm font-serif text-2xl leading-snug focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
       >
-        {hasSelection ? `“${shownText}”` : "Explain"}
+        {hasSelection ? `“${shownText}”` : "AI explain"}
       </h2>
 
       {!isLoaded ? (
@@ -139,7 +139,7 @@ export function ExplainCard({
         </div>
       ) : !hasSelection ? (
         <p className="mt-3 font-serif text-lg leading-relaxed">
-          Select a word or a line in the text (up to {SELECTION_MAX} characters), then choose Explain. You&apos;ll
+          Select a word or a line in the text (up to {SELECTION_MAX} characters), then choose AI explain. You&apos;ll
           see what it means in that sentence, as Austen used it.
         </p>
       ) : (
@@ -202,7 +202,8 @@ function Answer({
         <div className="rounded-md bg-paper px-4 py-3">
           <p className="font-serif text-lg leading-relaxed">Select words from one paragraph.</p>
           <p className="mt-1.5 text-[0.9375rem] leading-relaxed">
-            Explain works on a word or a line inside a single paragraph of the text. Select again, then choose Explain.
+            AI explain works on a word or a line inside a single paragraph of the text. Select again, then choose
+            AI explain.
           </p>
         </div>
       );

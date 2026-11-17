@@ -115,7 +115,7 @@ hidden. Reading position is sent at most every 10 seconds and when the tab is hi
 
 ## Explain (Claude API)
 
-- Select words → the toolbar's **Explain** → `POST /api/explain` → `lib/explain/server.ts`
+- Select words → the toolbar's **AI explain** → `POST /api/explain` → `lib/explain/server.ts`
   (signed-in only; the selection must be in that paragraph; cached per passage with
   `"use cache: remote"`) → `lib/explain/core.ts` (the model and its two tools).
 - `core.ts` imports nothing from Next, so the evals (`evals/run.mjs`, run with Node) test the
@@ -129,7 +129,7 @@ hidden. Reading position is sent at most every 10 seconds and when the tab is hi
 
 ## Wikipedia
 
-- Called only from our server: the reader's "Look it up" → `GET /api/lookup?q=` →
+- Called only from our server: the reader's "Wiki lookup" → `GET /api/lookup?q=` →
   `lib/wikipedia.ts` → Wikipedia. Why there: it's for signed-in readers only (so it isn't an
   open proxy), it sends a `User-Agent` (browsers can't set one), and each title is cached for
   a day for every reader (`"use cache"`, `cacheLife("days")`), so Wikipedia's rate limits are
