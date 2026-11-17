@@ -17,10 +17,11 @@ pick up where they stopped and keep a weekly reading goal. Flows live in `flows.
 
 ## Stack
 
-- Next.js and Tailwind CSS. Clerk for sign-in. Supabase (Postgres) for saved data. One external
-  API: the Wikipedia REST summary, `https://en.wikipedia.org/api/rest_v1/page/summary/{title}`.
+- Next.js and Tailwind CSS. Clerk for sign-in. Supabase (Postgres) for saved data. Two external
+  APIs: the Wikipedia REST summary, `https://en.wikipedia.org/api/rest_v1/page/summary/{title}`,
+  and the Claude API for explanations (Project v1), called only from our server.
 - Allowed new packages: `@clerk/nextjs`, `@supabase/supabase-js`, `@playwright/test`,
-  `@clerk/testing`. Push back on anything else.
+  `@clerk/testing`, `@anthropic-ai/sdk`. Push back on anything else.
 - Clerk stays on development keys. Deployed on Vercel's Hobby plan.
 
 ## Constraints

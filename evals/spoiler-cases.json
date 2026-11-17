@@ -1,0 +1,38 @@
+[
+  {
+    "id": "s3-darcy",
+    "chapter": 3,
+    "selection": "Mr. Darcy",
+    "avoid": "That Darcy comes to love Elizabeth, proposes to her or marries her; his letter; his good character under the pride; Pemberley as a place they visit."
+  },
+  {
+    "id": "s2-lydia",
+    "chapter": 2,
+    "selection": "Lydia",
+    "avoid": "That Lydia elopes with Wickham, or marries him."
+  },
+  {
+    "id": "s5-charlotte",
+    "chapter": 5,
+    "selection": "Charlotte",
+    "avoid": "That Charlotte marries Mr. Collins."
+  },
+  {
+    "id": "s13-collins",
+    "chapter": 13,
+    "selection": "Mr. Collins",
+    "avoid": "That Collins proposes to Elizabeth, that she refuses him, or that he marries Charlotte Lucas."
+  },
+  {
+    "id": "s15-wickham",
+    "chapter": 15,
+    "selection": "Wickham",
+    "avoid": "Anything about Wickham's past with Darcy (the living, Georgiana), his lies, his debts, or his elopement with Lydia."
+  },
+  {
+    "id": "s16-miss-de-bourgh",
+    "chapter": 16,
+    "selection": "Miss de Bourgh",
+    "avoid": "That Darcy does not marry her, that he marries Elizabeth, or that Lady Catherine later tries to stop that engagement."
+  }
+]

@@ -55,7 +55,7 @@ export const chapter03: Note[] = [
     phrase: "Derbyshire",
     kind: "context",
     short: "A county in the north Midlands, far from the Bennets' Hertfordshire.",
-    more: "Darcy's estate, Pemberley, is in Derbyshire, near the Peak District's hills and moors. To readers in Hertfordshire, near London, it was a long way off. Elizabeth will see it for herself in Chapter 43. Say it DAR-bee-sher.",
+    more: "Mr. Darcy's large estate is there, near the Peak District's hills and moors. To readers in Hertfordshire, near London, it was a long way off. Say it DAR-bee-sher.",
   },
   {
     id: "c3-slighted",
@@ -63,7 +63,7 @@ export const chapter03: Note[] = [
     phrase: "slighted",
     kind: "word",
     short: "Insulted by being ignored or treated as unimportant.",
-    more: "A slight is a snub. The daughter in question is Elizabeth, and the next scene shows exactly how it happened.",
+    more: "A slight is a snub: being passed over as not worth noticing. At a ball, where a gentleman was expected to be civil to everyone, it was a real offence.",
   },
   {
     id: "c3-two-dances",
@@ -127,7 +127,7 @@ export const chapter03: Note[] = [
     phrase: "accomplished",
     kind: "context",
     short: "Trained in the skills expected of a genteel young woman.",
-    more: "Accomplishments meant music, singing, drawing, dancing and modern languages, the skills that showed good breeding. Mary works hard at them. In Chapter 8, Darcy and Miss Bingley argue over what a truly accomplished woman must know.",
+    more: "Accomplishments meant music, singing, drawing, dancing and modern languages, the skills that showed good breeding. Here Mary is praised as the most accomplished girl in the neighbourhood.",
   },
   {
     id: "c3-longbourn",
@@ -135,7 +135,7 @@ export const chapter03: Note[] = [
     phrase: "Longbourn",
     kind: "context",
     short: "The Bennets' village and their house, in Hertfordshire.",
-    more: "As the “principal inhabitants,” the Bennets are the leading family of the village. Longbourn is a small estate next to grand Netherfield, and by law it can't pass to any of the five daughters, a problem the book takes up in Chapter 7.",
+    more: "As the “principal inhabitants,” the Bennets are the leading family of the village. Longbourn is a small estate beside grand Netherfield; in Austen's England, a family's standing went with its land.",
   },
   {
     id: "c3-twice",

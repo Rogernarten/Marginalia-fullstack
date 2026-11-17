@@ -8,6 +8,8 @@ import { findWord, removeWord, useSaved, type Word } from "@/lib/storage";
 import { toRuns } from "@/lib/text";
 import { AddWordButton } from "./add-word-button";
 import { ChapterNav } from "./chapter-nav";
+import { ExplainButton } from "./explain-button";
+import { ExplainCard } from "./explain-card";
 import { Legend } from "./legend";
 import { LookupCard } from "./lookup-card";
 import { LookUpButton } from "./look-up-button";
@@ -18,6 +20,7 @@ import { WordCard } from "./word-card";
 
 const SAVED = "saved-";
 const LOOKUP = "lookup";
+const EXPLAIN = "explain";
 
 /**
  * A chapter with its underlined words (guide notes) and shaded words (ones the reader saved
@@ -73,13 +76,18 @@ export function Reader({
   const activeNote = notes.find((n) => n.id === activeId) ?? null;
   // What "Look it up" was opened with; a new count each time so the card starts fresh.
   const [lookup, setLookup] = useState<{ text: string; paragraph: number | null; n: number } | null>(null);
+  // The same for "Explain".
+  const [explaining, setExplaining] = useState<{ text: string; paragraph: number | null; n: number } | null>(null);
   // A removed word is kept here so its card can offer Undo after it leaves the page.
   const [removed, setRemoved] = useState<Word | null>(null);
   const activeWord = activeId?.startsWith(SAVED)
     ? (saved?.words.find((w) => SAVED + w.id === activeId) ?? (removed && SAVED + removed.id === activeId ? removed : null))
     : null;
   // A boolean, so saving or removing (which changes the word object) doesn't re-run effects.
-  const isOpen = (activeNote ?? activeWord) !== null || (activeId === LOOKUP && lookup !== null);
+  const isOpen =
+    (activeNote ?? activeWord) !== null ||
+    (activeId === LOOKUP && lookup !== null) ||
+    (activeId === EXPLAIN && explaining !== null);
   // Words saved with the form (no note of their own) are shaded where they were found.
   const marks = useMemo(() => {
     const map = new Map<number, { id: string; phrase: string }[]>();
@@ -99,6 +107,11 @@ export function Reader({
   function openLookup(selection: { text: string; paragraph: number | null }, el: HTMLElement) {
     setLookup({ ...selection, n: (lookup?.n ?? 0) + 1 });
     open(LOOKUP, el);
+  }
+
+  function openExplain(selection: { text: string; paragraph: number | null }, el: HTMLElement) {
+    setExplaining({ ...selection, n: (explaining?.n ?? 0) + 1 });
+    open(EXPLAIN, el);
   }
 
   // Back to the word that was opened (re-found if Undo re-created it), or to its paragraph if
@@ -141,7 +154,9 @@ export function Reader({
     return () => document.removeEventListener("keydown", onKey);
   }, [isOpen, wide]);
 
-  const card = activeId === LOOKUP && lookup ? (
+  const card = activeId === EXPLAIN && explaining ? (
+    <ExplainCard key={explaining.n} chapter={chapter} start={explaining} headingRef={headingRef} onClose={close} />
+  ) : activeId === LOOKUP && lookup ? (
     <LookupCard
       key={lookup.n}
       chapter={chapter}
@@ -183,6 +198,7 @@ export function Reader({
             <h2 className="font-serif text-2xl">Chapter {chapter}</h2>
           )}
           <div className="flex flex-wrap gap-2">
+            <ExplainButton chapter={chapter} onExplain={openExplain} />
             <LookUpButton chapter={chapter} onLookUp={openLookup} />
             <AddWordButton chapter={chapter} />
           </div>
@@ -234,9 +250,10 @@ export function Reader({
               {notes.length > 0 && <Legend className="mt-4" />}
               <p className="mt-4 font-sans text-sm leading-relaxed text-muted">
                 {notes.length > 0 ? "Not underlined? " : "Found a word you don’t know? "}
-                Select it in the text, then choose <strong className="font-semibold text-ink">Look it up</strong> to
-                see it on Wikipedia, or <strong className="font-semibold text-ink">+ Add a word</strong> to save it
-                with your own note.
+                Select a word or a line in the text, then choose{" "}
+                <strong className="font-semibold text-ink">Explain</strong> to see what it means in that sentence,{" "}
+                <strong className="font-semibold text-ink">Look it up</strong> to see it on Wikipedia, or{" "}
+                <strong className="font-semibold text-ink">+ Add a word</strong> to save it with your own note.
               </p>
               {notes.length > 0 && (
                 <p className="mt-2 font-sans text-sm text-muted">Using a keyboard? Tab to a word and press Enter.</p>
@@ -251,7 +268,9 @@ export function Reader({
           ref={sheet}
           className="sheet"
           aria-labelledby={
-            activeId === LOOKUP
+            activeId === EXPLAIN
+              ? "explain-heading"
+              : activeId === LOOKUP
               ? "lookup-heading"
               : activeNote
                 ? `${activeNote.id}-heading`

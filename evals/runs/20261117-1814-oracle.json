@@ -1,0 +1,684 @@
+{
+  "summary": {
+    "label": "oracle",
+    "model": null,
+    "judgeModel": "deepseek-v4-pro",
+    "judgeServedBy": [
+      "deepseek-v4-pro"
+    ],
+    "startedAt": "2026-11-17T18:14:49.639Z",
+    "cases": 14,
+    "errors": 0,
+    "pass": "11/14 (79%)",
+    "notExplained": 0,
+    "glosses": {
+      "correct": "14/14 (100%)",
+      "short": "11/14 (79%)",
+      "noSpoiler": "14/14 (100%)",
+      "kindMatch": "14/14 (100%)",
+      "contextWithOutsideSource": "0/10 (0%)"
+    },
+    "spoilerBait": {
+      "noSpoiler": "–",
+      "correct": "–",
+      "short": "–"
+    },
+    "madeUpSourcesDropped": 0,
+    "cost": {
+      "model": 0,
+      "perExplanation": 0,
+      "judge": 0.0256
+    },
+    "sentBackToLookUp": 0,
+    "latencySeconds": null,
+    "requestsPerExplanation": null,
+    "toolCalls": {}
+  },
+  "errors": [],
+  "rows": [
+    {
+      "id": "c1-truth",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 0,
+        "selection": "truth universally acknowledged",
+        "sentence": "It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "A grand opening that is really a joke: this “truth” is gossip, not philosophy.",
+        "background": "The sentence sounds like a law of nature, but it is gossip dressed up as philosophy, and the narrator knows it. Austen's narrator often says the opposite of what she means; reading for that irony is half the fun of the book.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "A grand opening that is really a joke: this “truth” is gossip, not philosophy.",
+        "more": "The sentence sounds like a law of nature, but it is gossip dressed up as philosophy, and the narrator knows it. Austen's narrator often says the opposite of what she means; reading for that irony is half the fun of the book."
+      },
+      "checks": {
+        "meaningWords": 14,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning captures the same essential point as the reference: the phrase is a grand but ironic opening, treating gossip as if it were a universal truth. Different wording and the omission of 'the narrator knows it' do not change the sense.",
+        "correct": true,
+        "spoiler_reason": "The candidate's background includes only general observations about Austen's narrative irony, which are evident from the opening sentence itself and do not reveal later plot points or character developments.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 483,
+        "outputTokens": 296,
+        "costUsd": 0.0009048600000000002
+      },
+      "pass": true
+    },
+    {
+      "id": "c1-north",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 9,
+        "selection": "a young man of large fortune from the north of England",
+        "sentence": "“Why, my dear, you must know, Mrs. Long says that Netherfield is taken by a young man of large fortune from the north of England; that he came down on Monday in a chaise and four to see the place, and was so much delighted with it that he agreed with Mr. Morris immediately; that he is to take possession before Michaelmas, and some of his servants are to be in the house by the end of next week.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "Rich, and from the north, where many new fortunes came from trade.",
+        "background": "The mills and trade of northern England were making new money in Austen's day, and old landed families looked down on fortunes made that way. Renting a great country house, as this young man is doing, was one way new money moved into the gentry.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "Rich, and from the north, where many new fortunes came from trade.",
+        "more": "The mills and trade of northern England were making new money in Austen's day, and old landed families looked down on fortunes made that way. Renting a great country house, as this young man is doing, was one way new money moved into the gentry."
+      },
+      "checks": {
+        "meaningWords": 12,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning gives the same sense as the reference: the young man is rich and from the north, where new money often came from trade. The background adds accurate historical context about northern industrial wealth and social mobility through renting country houses, which matches the reference.",
+        "correct": true,
+        "spoiler_reason": "The candidate does not mention or hint at any future events, character revelations, or relationship outcomes. All information is either in the sentence, earlier in the chapter, or general historical background known at this point.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 565,
+        "outputTokens": 689,
+        "costUsd": 0.0017371200000000002
+      },
+      "pass": true
+    },
+    {
+      "id": "c1-thousand-a-year",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 13,
+        "selection": "four or five thousand a year",
+        "sentence": "A single man of large fortune; four or five thousand a year."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "His yearly income, enough to make him one of the richest men around.",
+        "background": "Incomes were quoted per year, from capital invested at about four or five per cent, so this suggests a fortune near £100,000. Many gentry families lived on well under £1,000 a year, so this is great wealth.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "His yearly income, enough to make him one of the richest men around.",
+        "more": "Incomes were quoted per year, from capital invested at about four or five per cent, so this suggests a fortune near £100,000. Many gentry families lived on well under £1,000 a year, so this is great wealth."
+      },
+      "checks": {
+        "meaningWords": 13,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning accurately conveys the same sense as the reference: the phrase indicates his yearly income, making him extremely wealthy.",
+        "correct": true,
+        "spoiler_reason": "The candidate only states facts about his wealth and general financial context known from this early point, without hinting at any later events or revelations.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 473,
+        "outputTokens": 435,
+        "costUsd": 0.00117348
+      },
+      "pass": true
+    },
+    {
+      "id": "c1-lucas",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 23,
+        "selection": "Sir William and Lady Lucas",
+        "sentence": "Sir William and Lady Lucas are determined to go, merely on that account; for in general, you know, they visit no new comers."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "A knight and his wife: an honour for him, not a title his son inherits.",
+        "background": "“Sir” before a first name marks a knight. A knighthood was often given for public service, and it is personal: it ends with him, and his son will be plain Mr. Lucas. “Lady Lucas” is the courtesy title of a knight's wife.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "A knight and his wife: an honour for him, not a title his son inherits.",
+        "more": "“Sir” before a first name marks a knight. A knighthood was often given for public service, and it is personal: it ends with him, and his son will be plain Mr. Lucas. “Lady Lucas” is the courtesy title of a knight's wife."
+      },
+      "checks": {
+        "meaningWords": 15,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate meaning captures the same sense as the reference: Sir William is a knight and Lady Lucas is his wife, and the title is not hereditary.",
+        "correct": true,
+        "spoiler_reason": "The note mentions that the title does not pass to his son, which is a general fact about knighthoods and is also stated in the reference, not a later plot revelation.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 506,
+        "outputTokens": 830,
+        "costUsd": 0.00197736
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-quickness",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 26,
+        "selection": "quickness",
+        "sentence": "“They have none of them much to recommend them,” replied he: “they are all silly and ignorant like other girls; but Lizzy has something more of quickness than her sisters.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Quickness of mind: sharpness and wit.",
+        "background": "Austen's quick often means lively or clever, as in quick-witted, not fast. Here Mr. Bennet singles Elizabeth out for it among his daughters.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Quickness of mind: sharpness and wit.",
+        "more": "Austen's quick often means lively or clever, as in quick-witted, not fast. Here Mr. Bennet singles Elizabeth out for it among his daughters."
+      },
+      "checks": {
+        "meaningWords": 6,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning gives the same sense as the reference: quickness as sharpness of mind and wit, not speed.",
+        "correct": true,
+        "spoiler_reason": "The candidate does not mention any later events or revelations; it only explains the meaning within the current context.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 449,
+        "outputTokens": 342,
+        "costUsd": 0.0009735
+      },
+      "pass": true
+    },
+    {
+      "id": "c1-nerves",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 27,
+        "selection": "my poor nerves",
+        "sentence": "You have no compassion on my poor nerves.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "Her “nerves”: a fashionable complaint of anxiety and agitation.",
+        "background": "Doctors of the period blamed many moods on weak nerves, and complaining of them was a respectable way to ask for sympathy. Here she uses them to scold her husband for teasing her.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "Her “nerves”: a fashionable complaint of anxiety and agitation.",
+        "more": "Doctors of the period blamed many moods on weak nerves, and complaining of them was a respectable way to ask for sympathy. Here she uses them to scold her husband for teasing her."
+      },
+      "checks": {
+        "meaningWords": 9,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning matches the reference: it defines 'nerves' as a fashionable complaint of anxiety and agitation, and the background explains the medical context and how she uses the complaint to scold her husband, which is exactly the reference's point.",
+        "correct": true,
+        "spoiler_reason": "The candidate does not mention any later events, revelations, or character developments beyond what is already in this sentence and paragraph.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 438,
+        "outputTokens": 331,
+        "costUsd": 0.00094446
+      },
+      "pass": true
+    },
+    {
+      "id": "c2-waited-on",
+      "type": "gloss",
+      "passage": {
+        "chapter": 2,
+        "paragraph": 0,
+        "selection": "waited on",
+        "sentence": "Mr. Bennet was among the earliest of those who waited on Mr. Bingley."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Paid a formal visit to.",
+        "background": "To wait on someone here means to call on them, not to serve them. So Mr. Bennet did visit after all, as Chapter 1 hinted, while telling his wife he wouldn't.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Paid a formal visit to.",
+        "more": "To wait on someone here means to call on them, not to serve them. So Mr. Bennet did visit after all, as Chapter 1 hinted, while telling his wife he wouldn't."
+      },
+      "checks": {
+        "meaningWords": 5,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning 'Paid a formal visit to' matches the reference sense of 'waited on' in this sentence, and the background accurately explains the old meaning and the irony from Chapter 1.",
+        "correct": true,
+        "spoiler_reason": "The background only refers to events in Chapter 1 and the fact stated in this sentence; it does not reveal any later developments.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 439,
+        "outputTokens": 1131,
+        "costUsd": 0.0025291199999999997
+      },
+      "pass": true
+    },
+    {
+      "id": "c2-trimming",
+      "type": "gloss",
+      "passage": {
+        "chapter": 2,
+        "paragraph": 0,
+        "selection": "trimming a hat",
+        "sentence": "Observing his second daughter employed in trimming a hat, he suddenly addressed her with,--"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "Decorating a hat with ribbons, lace or flowers, a common home craft.",
+        "background": "Women often bought plain hats and bonnets and trimmed them themselves, changing the trimming to suit the season or a party. It was cheap, sociable work, done at home.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "Decorating a hat with ribbons, lace or flowers, a common home craft.",
+        "more": "Women often bought plain hats and bonnets and trimmed them themselves, changing the trimming to suit the season or a party. It was cheap, sociable work, done at home."
+      },
+      "checks": {
+        "meaningWords": 12,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning gives the same sense of 'trimming a hat' as the reference, defining it as decorating a hat with ribbons, lace, or flowers, which is accurate for this sentence.",
+        "correct": true,
+        "spoiler_reason": "The candidate note only explains the craft of hat trimming and does not mention or hint at any later events or revelations in the novel.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 450,
+        "outputTokens": 475,
+        "costUsd": 0.0012375
+      },
+      "pass": true
+    },
+    {
+      "id": "c2-assemblies",
+      "type": "gloss",
+      "passage": {
+        "chapter": 2,
+        "paragraph": 3,
+        "selection": "the assemblies",
+        "sentence": "“But you forget, mamma,” said Elizabeth, “that we shall meet him at the assemblies, and that Mrs. Long has promised to introduce him.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "Public balls held in the town's assembly rooms.",
+        "background": "Local gentry bought tickets to dances in a public hall, so an assembly was the one place a newcomer could meet the whole neighbourhood at once, and be introduced properly.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "Public balls held in the town's assembly rooms.",
+        "more": "Local gentry bought tickets to dances in a public hall, so an assembly was the one place a newcomer could meet the whole neighbourhood at once, and be introduced properly."
+      },
+      "checks": {
+        "meaningWords": 8,
+        "backgroundSentences": 1,
+        "short": true,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning matches the reference: public balls in assembly rooms, and the background adds accurate detail about how an assembly allowed a newcomer to meet the neighbourhood and be introduced.",
+        "correct": true,
+        "spoiler_reason": "The candidate only explains the term 'assemblies' with no reference to later events, characters, or plot developments beyond what is already established at this point.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 447,
+        "outputTokens": 475,
+        "costUsd": 0.00123552
+      },
+      "pass": true
+    },
+    {
+      "id": "c2-stoutly",
+      "type": "gloss",
+      "passage": {
+        "chapter": 2,
+        "paragraph": 25,
+        "selection": "stoutly",
+        "sentence": "“Oh,” said Lydia, stoutly, “I am not afraid; for though I am the youngest, I’m the tallest.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Boldly and firmly, not “fatly.”",
+        "background": "Stout first meant brave or strong, as in “stout-hearted.” The sense of heavy-set came later. Lydia, the youngest, answers with full confidence.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Boldly and firmly, not “fatly.”",
+        "more": "Stout first meant brave or strong, as in “stout-hearted.” The sense of heavy-set came later. Lydia, the youngest, answers with full confidence."
+      },
+      "checks": {
+        "meaningWords": 5,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning 'boldly and firmly, not fatly' matches the reference's sense of 'stoutly' as brave or strong, not heavy-set. The background also correctly notes the historical meaning and Lydia's confident reply.",
+        "correct": true,
+        "spoiler_reason": "The candidate only describes Lydia's statement in the current sentence, using information already present. It does not mention or hint at any future events or revelations.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 445,
+        "outputTokens": 420,
+        "costUsd": 0.0011252999999999999
+      },
+      "pass": false
+    },
+    {
+      "id": "c3-derbyshire",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 4,
+        "selection": "Derbyshire",
+        "sentence": "The gentlemen pronounced him to be a fine figure of a man, the ladies declared he was much handsomer than Mr. Bingley, and he was looked at with great admiration for about half the evening, till his manners gave a disgust which turned the tide of his popularity; for he was discovered to be proud, to be above his company, and above being pleased; and not all his large estate in Derbyshire could save him from having a most forbidding, disagreeable countenance, and being unworthy to be compared with his friend."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "A county in the north Midlands, far from the Bennets' Hertfordshire.",
+        "background": "Mr. Darcy's large estate is there, near the Peak District's hills and moors. To readers in Hertfordshire, near London, it was a long way off. Say it DAR-bee-sher.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "A county in the north Midlands, far from the Bennets' Hertfordshire.",
+        "more": "Mr. Darcy's large estate is there, near the Peak District's hills and moors. To readers in Hertfordshire, near London, it was a long way off. Say it DAR-bee-sher."
+      },
+      "checks": {
+        "meaningWords": 11,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning accurately captures that Derbyshire is a county in the north Midlands, far from Hertfordshire, matching the reference's sense in this sentence.",
+        "correct": true,
+        "spoiler_reason": "The note only restates information already present in the sentence (Mr. Darcy's large estate is in Derbyshire) and adds geographical context, without hinting at any future events or revelations.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 558,
+        "outputTokens": 573,
+        "costUsd": 0.00150282
+      },
+      "pass": false
+    },
+    {
+      "id": "c3-slighted",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 5,
+        "selection": "slighted",
+        "sentence": "Amongst the most violent against him was Mrs. Bennet, whose dislike of his general behaviour was sharpened into particular resentment by his having slighted one of her daughters."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Insulted by being ignored or treated as unimportant.",
+        "background": "A slight is a snub: being passed over as not worth noticing. At a ball, where a gentleman was expected to be civil to everyone, it was a real offence.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Insulted by being ignored or treated as unimportant.",
+        "more": "A slight is a snub: being passed over as not worth noticing. At a ball, where a gentleman was expected to be civil to everyone, it was a real offence."
+      },
+      "checks": {
+        "meaningWords": 8,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate meaning and background match the reference exactly, giving the correct sense of 'slighted' as insulted by being ignored or treated as unimportant, and accurately explaining the social context of a ball.",
+        "correct": true,
+        "spoiler_reason": "The candidate does not mention or hint at any later events, revelations, or relationship outcomes; it only defines the word and explains the social expectation at a ball, which is already evident from the chapter so far.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 455,
+        "outputTokens": 1591,
+        "costUsd": 0.00345048
+      },
+      "pass": true
+    },
+    {
+      "id": "c3-accomplished",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 14,
+        "selection": "accomplished",
+        "sentence": "Mary had heard herself mentioned to Miss Bingley as the most accomplished girl in the neighbourhood; and Catherine and Lydia had been fortunate enough to be never without partners, which was all that they had yet learnt to care for at a ball."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "Trained in the skills expected of a genteel young woman.",
+        "background": "Accomplishments meant music, singing, drawing, dancing and modern languages, the skills that showed good breeding. Here Mary is praised as the most accomplished girl in the neighbourhood.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "Trained in the skills expected of a genteel young woman.",
+        "more": "Accomplishments meant music, singing, drawing, dancing and modern languages, the skills that showed good breeding. Here Mary is praised as the most accomplished girl in the neighbourhood."
+      },
+      "checks": {
+        "meaningWords": 10,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning and background are identical to the reference, so they give the same sense of 'accomplished' as trained in genteel skills, and accurately note Mary's praise.",
+        "correct": true,
+        "spoiler_reason": "The note does not mention or hint at anything beyond this point; it only restates information from the sentence and general knowledge of accomplishments.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 469,
+        "outputTokens": 848,
+        "costUsd": 0.0019885799999999998
+      },
+      "pass": true
+    },
+    {
+      "id": "c3-longbourn",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 14,
+        "selection": "Longbourn",
+        "sentence": "They returned, therefore, in good spirits to Longbourn, the village where they lived, and of which they were the principal inhabitants."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "The Bennets' village and their house, in Hertfordshire.",
+        "background": "As the “principal inhabitants,” the Bennets are the leading family of the village. Longbourn is a small estate beside grand Netherfield; in Austen's England, a family's standing went with its land.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "The Bennets' village and their house, in Hertfordshire.",
+        "more": "As the “principal inhabitants,” the Bennets are the leading family of the village. Longbourn is a small estate beside grand Netherfield; in Austen's England, a family's standing went with its land."
+      },
+      "checks": {
+        "meaningWords": 8,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning correctly identifies Longbourn as the Bennets' village and house in Hertfordshire, matching the sense of the selection in the sentence.",
+        "correct": true,
+        "spoiler_reason": "The candidate's background mentions Longbourn as small compared to Netherfield, but this is already implied by the established wealth and status difference in early chapters, not a later revelation.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 469,
+        "outputTokens": 2279,
+        "costUsd": 0.00482196
+      },
+      "pass": true
+    }
+  ]
+}

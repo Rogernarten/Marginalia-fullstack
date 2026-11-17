@@ -1,0 +1,500 @@
+{
+  "summary": {
+    "label": "null",
+    "model": null,
+    "judgeModel": "deepseek-v4-pro",
+    "judgeServedBy": [
+      "deepseek-v4-pro"
+    ],
+    "startedAt": "2026-11-17T18:06:34.850Z",
+    "cases": 10,
+    "errors": 0,
+    "pass": "0/10 (0%)",
+    "notExplained": 0,
+    "glosses": {
+      "correct": "0/10 (0%)",
+      "short": "10/10 (100%)",
+      "noSpoiler": "10/10 (100%)",
+      "kindMatch": "3/10 (30%)",
+      "contextWithOutsideSource": "0/7 (0%)"
+    },
+    "spoilerBait": {
+      "noSpoiler": "–",
+      "correct": "–",
+      "short": "–"
+    },
+    "madeUpSourcesDropped": 0,
+    "cost": {
+      "model": 0,
+      "perExplanation": 0,
+      "judge": 0.0077
+    },
+    "sentBackToLookUp": 0,
+    "latencySeconds": null,
+    "requestsPerExplanation": null,
+    "toolCalls": {}
+  },
+  "errors": [],
+  "rows": [
+    {
+      "id": "c1-truth",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 0,
+        "selection": "truth universally acknowledged",
+        "sentence": "It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "A word or phrase used in the novel.",
+        "background": "",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "A grand opening that is really a joke: the “truth” is what local mothers want to believe.",
+        "more": "The sentence sounds like philosophy, but the next paragraph gives the game away. It is the neighbouring families, with daughters to marry off, who decide that a rich newcomer must want a wife. Austen's narrator often says the opposite of what she means; reading for that irony is half the fun of the book."
+      },
+      "checks": {
+        "meaningWords": 8,
+        "backgroundSentences": 0,
+        "short": true,
+        "kindMatch": false,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning is just 'A word or phrase used in the novel,' which does not explain the phrase's sense or the irony that the reference identifies.",
+        "correct": false,
+        "spoiler_reason": "It contains no information about later events or characters, so no spoiler.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 442,
+        "outputTokens": 292,
+        "costUsd": 0.00086988
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-fortune",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 0,
+        "selection": "in possession of a good fortune",
+        "sentence": "It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "A word or phrase used in the novel.",
+        "background": "",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "Owning inherited wealth that pays an income without working.",
+        "more": "A gentleman's fortune was land or invested money, and people talked about it by the yearly income it produced (see “four or five thousand a year” below). Earning a living through trade or a profession ranked lower than living on such an income."
+      },
+      "checks": {
+        "meaningWords": 8,
+        "backgroundSentences": 0,
+        "short": true,
+        "kindMatch": false,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate meaning does not explain what \"in possession of a good fortune\" means; it merely states that it is a phrase in the novel.",
+        "correct": false,
+        "spoiler_reason": "The candidate gives no additional background, so there is nothing that reveals later events.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 425,
+        "outputTokens": 330,
+        "costUsd": 0.0009339
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-in-want-of",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 0,
+        "selection": "in want of",
+        "sentence": "It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "A word or phrase used in the novel.",
+        "background": "",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Lacking or needing, not “wanting” in the sense of desiring.",
+        "more": "Today we would say “in need of.” The old sense of want as lack survives in “for want of a better word.” Austen plays on both senses: he lacks a wife, so the neighbours assume he must desire one."
+      },
+      "checks": {
+        "meaningWords": 8,
+        "backgroundSentences": 0,
+        "short": true,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning merely says the selection is a word or phrase used in the novel; it does not explain that 'in want of' means lacking or needing, nor the play on both senses noted in the reference.",
+        "correct": false,
+        "spoiler_reason": "The candidate meaning does not mention any later events, character revelations, or outcomes, so it contains no spoilers.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 423,
+        "outputTokens": 228,
+        "costUsd": 0.00073062
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-rightful-property",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 1,
+        "selection": "rightful property",
+        "sentence": "However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered as the rightful property of some one or other of their daughters."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "A word or phrase used in the novel.",
+        "background": "",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "Spoken of as if he already belongs to one of the local daughters.",
+        "more": "A neat reversal. Under English law in 1813, a woman's property passed to her husband when she married. Here it is the rich young man who is treated as property, claimed in advance by the neighbourhood."
+      },
+      "checks": {
+        "meaningWords": 8,
+        "backgroundSentences": 0,
+        "short": true,
+        "kindMatch": false,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate does not explain the sense of 'rightful property' in this sentence; it only says it is a word or phrase used in the novel, which is not a meaning.",
+        "correct": false,
+        "spoiler_reason": "The candidate mentions no later events or revelations, so it does not spoil anything.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 445,
+        "outputTokens": 140,
+        "costUsd": 0.0005708999999999999
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-let",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 2,
+        "selection": "is let at last",
+        "sentence": "“My dear Mr. Bennet,” said his lady to him one day, “have you heard that Netherfield Park is let at last?”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "A word or phrase used in the novel.",
+        "background": "",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Has been rented to a tenant at last.",
+        "more": "To let means to rent out, and British signs still say “To let.” Netherfield's owner isn't moving in; a tenant has leased the house and grounds. “At last” tells you the house has stood empty for a while."
+      },
+      "checks": {
+        "meaningWords": 8,
+        "backgroundSentences": 0,
+        "short": true,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate does not give the sense of the selection; it just says it is a word or phrase used in the novel.",
+        "correct": false,
+        "spoiler_reason": "The candidate does not mention any later events or revelations.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 426,
+        "outputTokens": 185,
+        "costUsd": 0.00064746
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-north",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 9,
+        "selection": "a young man of large fortune from the north of England",
+        "sentence": "“Why, my dear, you must know, Mrs. Long says that Netherfield is taken by a young man of large fortune from the north of England; that he came down on Monday in a chaise and four to see the place, and was so much delighted with it that he agreed with Mr. Morris immediately; that he is to take possession before Michaelmas, and some of his servants are to be in the house by the end of next week.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "A word or phrase used in the novel.",
+        "background": "",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "Rich, and from the north, where many new fortunes came from trade.",
+        "more": "The mills and trade of northern England were making new money in Austen's day. Chapter 4 confirms it: the Bingleys' fortune “had been acquired by trade,” a fact his sisters would rather forget. Bingley is renting an estate, not inheriting one, which is how new money became landed gentry."
+      },
+      "checks": {
+        "meaningWords": 8,
+        "backgroundSentences": 0,
+        "short": true,
+        "kindMatch": false,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate meaning does not explain the selection; it merely says 'a word or phrase used in the novel', which gives no sense of the phrase 'a young man of large fortune from the north of England'.",
+        "correct": false,
+        "spoiler_reason": "There is no spoiler because the candidate meaning and background contain no actual details about events or characters.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 518,
+        "outputTokens": 213,
+        "costUsd": 0.00076362
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-chaise",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 9,
+        "selection": "chaise and four",
+        "sentence": "“Why, my dear, you must know, Mrs. Long says that Netherfield is taken by a young man of large fortune from the north of England; that he came down on Monday in a chaise and four to see the place, and was so much delighted with it that he agreed with Mr. Morris immediately; that he is to take possession before Michaelmas, and some of his servants are to be in the house by the end of next week.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "A word or phrase used in the novel.",
+        "background": "",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "A fast closed carriage pulled by four horses: arriving in style.",
+        "more": "A post-chaise was a light carriage hired for travel. Two horses were usual; paying for four meant more speed and more show. Mrs. Bennet mentions it because it signals money, much as arriving in an expensive car would today."
+      },
+      "checks": {
+        "meaningWords": 8,
+        "backgroundSentences": 0,
+        "short": true,
+        "kindMatch": false,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate meaning simply states 'A word or phrase used in the novel,' which does not explain what a chaise and four is or the point the reference makes about it signaling wealth.",
+        "correct": false,
+        "spoiler_reason": "The candidate meaning contains no information about later events or revelations.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 492,
+        "outputTokens": 204,
+        "costUsd": 0.0007286400000000001
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-michaelmas",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 9,
+        "selection": "Michaelmas",
+        "sentence": "“Why, my dear, you must know, Mrs. Long says that Netherfield is taken by a young man of large fortune from the north of England; that he came down on Monday in a chaise and four to see the place, and was so much delighted with it that he agreed with Mr. Morris immediately; that he is to take possession before Michaelmas, and some of his servants are to be in the house by the end of next week.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "A word or phrase used in the novel.",
+        "background": "",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "The feast of St. Michael, 29 September, when rents fell due and new leases began.",
+        "more": "Michaelmas was one of England's four “quarter days,” with Lady Day, Midsummer and Christmas, when rents were paid and tenancies started. So Bingley will move in by the end of September. Say it MICK-ul-mus."
+      },
+      "checks": {
+        "meaningWords": 8,
+        "backgroundSentences": 0,
+        "short": true,
+        "kindMatch": false,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning does not explain what 'Michaelmas' refers to, only that it is a word or phrase used in the novel, so it fails to give the sense required.",
+        "correct": false,
+        "spoiler_reason": "The candidate's meaning does not mention or hint at any future events or revelations.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 500,
+        "outputTokens": 146,
+        "costUsd": 0.0006190799999999999
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-thousand-a-year",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 13,
+        "selection": "four or five thousand a year",
+        "sentence": "A single man of large fortune; four or five thousand a year."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "A word or phrase used in the novel.",
+        "background": "",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "His yearly income, enough to make him one of the richest men around.",
+        "more": "Incomes were quoted per year, from capital invested at about four or five per cent, so this suggests a fortune near £100,000. For scale: Mr. Bennet's estate brings in £2,000 a year, and in Chapter 3 the room hears that Mr. Darcy has £10,000."
+      },
+      "checks": {
+        "meaningWords": 8,
+        "backgroundSentences": 0,
+        "short": true,
+        "kindMatch": false,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate meaning does not define the selection; it merely says it is 'a word or phrase used in the novel,' which gives no sense of the income amount or its significance. It fails to convey the meaning in the reference, such as his yearly income and wealth.",
+        "correct": false,
+        "spoiler_reason": "The candidate meaning and background mention nothing beyond the selected phrase, so there is no hint of later events or revelations.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 431,
+        "outputTokens": 213,
+        "costUsd": 0.0007062
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-tiresome",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 15,
+        "selection": "tiresome",
+        "sentence": "“My dear Mr. Bennet,” replied his wife, “how can you be so tiresome?"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "A word or phrase used in the novel.",
+        "background": "",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Annoying and wearing to deal with.",
+        "more": "Tire + -some (“tending to”), like troublesome and irksome. Mrs. Bennet uses it whenever her husband refuses to play along, which is often."
+      },
+      "checks": {
+        "meaningWords": 8,
+        "backgroundSentences": 0,
+        "short": true,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning does not define 'tiresome' at all; it merely states that it is a word or phrase used in the novel, so it fails to give the same sense as the reference (annoying and wearing to deal with).",
+        "correct": false,
+        "spoiler_reason": "The candidate's text does not mention, hint at, or foreshadow anything the reader learns only after this position; it contains no future events, character revelations, or relationship outcomes.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 399,
+        "outputTokens": 437,
+        "costUsd": 0.0011286
+      },
+      "pass": false
+    }
+  ]
+}

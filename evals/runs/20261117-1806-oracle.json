@@ -1,0 +1,2763 @@
+{
+  "summary": {
+    "label": "oracle",
+    "model": null,
+    "judgeModel": "deepseek-v4-pro",
+    "judgeServedBy": [
+      "deepseek-v4-pro"
+    ],
+    "startedAt": "2026-11-17T18:06:34.851Z",
+    "cases": 61,
+    "errors": 2,
+    "pass": "14/59 (24%)",
+    "notExplained": 0,
+    "glosses": {
+      "correct": "58/59 (98%)",
+      "short": "17/59 (29%)",
+      "noSpoiler": "48/59 (81%)",
+      "kindMatch": "59/59 (100%)",
+      "contextWithOutsideSource": "0/23 (0%)"
+    },
+    "spoilerBait": {
+      "noSpoiler": "–",
+      "correct": "–",
+      "short": "–"
+    },
+    "madeUpSourcesDropped": 0,
+    "cost": {
+      "model": 0,
+      "perExplanation": 0,
+      "judge": 0.1222
+    },
+    "sentBackToLookUp": 0,
+    "latencySeconds": null,
+    "requestsPerExplanation": null,
+    "toolCalls": {}
+  },
+  "errors": [
+    {
+      "id": "c1-nerves",
+      "message": "Unterminated string in JSON at position 38 (line 2 column 37)"
+    },
+    {
+      "id": "c3-upper-window",
+      "message": "Unexpected end of JSON input"
+    }
+  ],
+  "rows": [
+    {
+      "id": "c1-truth",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 0,
+        "selection": "truth universally acknowledged",
+        "sentence": "It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "A grand opening that is really a joke: the “truth” is what local mothers want to believe.",
+        "background": "The sentence sounds like philosophy, but the next paragraph gives the game away. It is the neighbouring families, with daughters to marry off, who decide that a rich newcomer must want a wife. Austen's narrator often says the opposite of what she means; reading for that irony is half the fun of the book.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "A grand opening that is really a joke: the “truth” is what local mothers want to believe.",
+        "more": "The sentence sounds like philosophy, but the next paragraph gives the game away. It is the neighbouring families, with daughters to marry off, who decide that a rich newcomer must want a wife. Austen's narrator often says the opposite of what she means; reading for that irony is half the fun of the book."
+      },
+      "checks": {
+        "meaningWords": 17,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning captures the ironic sense of the selection exactly as the reference does, stating that the 'truth' is really what local mothers want to believe.",
+        "correct": true,
+        "spoiler_reason": "The candidate's background mentions that the next paragraph gives the game away and that the neighbouring families decide the newcomer wants a wife, which is information the reader has not yet encountered at this position (after only the first sentence).",
+        "spoiler": true,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 515,
+        "outputTokens": 911,
+        "costUsd": 0.00214368
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-fortune",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 0,
+        "selection": "in possession of a good fortune",
+        "sentence": "It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "Owning inherited wealth that pays an income without working.",
+        "background": "A gentleman's fortune was land or invested money, and people talked about it by the yearly income it produced (see “four or five thousand a year” below). Earning a living through trade or a profession ranked lower than living on such an income.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "Owning inherited wealth that pays an income without working.",
+        "more": "A gentleman's fortune was land or invested money, and people talked about it by the yearly income it produced (see “four or five thousand a year” below). Earning a living through trade or a profession ranked lower than living on such an income."
+      },
+      "checks": {
+        "meaningWords": 9,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate meaning is identical to the reference meaning, and the candidate background is identical to the reference background, so it accurately explains the selection.",
+        "correct": true,
+        "spoiler_reason": "The note's reference to 'four or five thousand a year' below merely points to a phrase in the same chapter and does not reveal any later plot points or character developments.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 478,
+        "outputTokens": 2795,
+        "costUsd": 0.00584958
+      },
+      "pass": true
+    },
+    {
+      "id": "c1-in-want-of",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 0,
+        "selection": "in want of",
+        "sentence": "It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Lacking or needing, not “wanting” in the sense of desiring.",
+        "background": "Today we would say “in need of.” The old sense of want as lack survives in “for want of a better word.” Austen plays on both senses: he lacks a wife, so the neighbours assume he must desire one.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Lacking or needing, not “wanting” in the sense of desiring.",
+        "more": "Today we would say “in need of.” The old sense of want as lack survives in “for want of a better word.” Austen plays on both senses: he lacks a wife, so the neighbours assume he must desire one."
+      },
+      "checks": {
+        "meaningWords": 10,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning matches the reference: 'in want of' means lacking or needing, not desiring, and the background adds the same clarification about the old sense and Austen's wordplay. Nothing contradicts the reference.",
+        "correct": true,
+        "spoiler_reason": "The candidate's meaning and background discuss only the phrasing and wordplay in this opening sentence, with no mention of later events or revelations.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 478,
+        "outputTokens": 277,
+        "costUsd": 0.0008639400000000001
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-rightful-property",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 1,
+        "selection": "rightful property",
+        "sentence": "However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered as the rightful property of some one or other of their daughters."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "Spoken of as if he already belongs to one of the local daughters.",
+        "background": "A neat reversal. Under English law in 1813, a woman's property passed to her husband when she married. Here it is the rich young man who is treated as property, claimed in advance by the neighbourhood.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "Spoken of as if he already belongs to one of the local daughters.",
+        "more": "A neat reversal. Under English law in 1813, a woman's property passed to her husband when she married. Here it is the rich young man who is treated as property, claimed in advance by the neighbourhood."
+      },
+      "checks": {
+        "meaningWords": 13,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning matches the reference exactly, conveying that the man is spoken of as already belonging to one of the daughters.",
+        "correct": true,
+        "spoiler_reason": "The candidate does not mention or hint at any later events or revelations; it only explains the irony and legal context available at this point.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 495,
+        "outputTokens": 268,
+        "costUsd": 0.00085734
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-let",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 2,
+        "selection": "is let at last",
+        "sentence": "“My dear Mr. Bennet,” said his lady to him one day, “have you heard that Netherfield Park is let at last?”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Has been rented to a tenant at last.",
+        "background": "To let means to rent out, and British signs still say “To let.” Netherfield's owner isn't moving in; a tenant has leased the house and grounds. “At last” tells you the house has stood empty for a while.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Has been rented to a tenant at last.",
+        "more": "To let means to rent out, and British signs still say “To let.” Netherfield's owner isn't moving in; a tenant has leased the house and grounds. “At last” tells you the house has stood empty for a while."
+      },
+      "checks": {
+        "meaningWords": 8,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning and background give the same sense as the reference: 'is let at last' means the property has finally been rented to a tenant, with accurate additional explanation of 'to let' and the implication that it was vacant for a while.",
+        "correct": true,
+        "spoiler_reason": "The candidate does not mention, hint at, or foreshadow any later events or character revelations; it only explains the phrase's meaning and the situation of Netherfield Park being rented, all of which is evident from this sentence and general knowledge.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 477,
+        "outputTokens": 378,
+        "costUsd": 0.00106326
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-north",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 9,
+        "selection": "a young man of large fortune from the north of England",
+        "sentence": "“Why, my dear, you must know, Mrs. Long says that Netherfield is taken by a young man of large fortune from the north of England; that he came down on Monday in a chaise and four to see the place, and was so much delighted with it that he agreed with Mr. Morris immediately; that he is to take possession before Michaelmas, and some of his servants are to be in the house by the end of next week.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "Rich, and from the north, where many new fortunes came from trade.",
+        "background": "The mills and trade of northern England were making new money in Austen's day. Chapter 4 confirms it: the Bingleys' fortune “had been acquired by trade,” a fact his sisters would rather forget. Bingley is renting an estate, not inheriting one, which is how new money became landed gentry.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "Rich, and from the north, where many new fortunes came from trade.",
+        "more": "The mills and trade of northern England were making new money in Austen's day. Chapter 4 confirms it: the Bingleys' fortune “had been acquired by trade,” a fact his sisters would rather forget. Bingley is renting an estate, not inheriting one, which is how new money became landed gentry."
+      },
+      "checks": {
+        "meaningWords": 12,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate meaning conveys that he is rich and from the north, and that the north was associated with new money from trade, which matches the reference's point about the source of his wealth. It does not misstate the sense.",
+        "correct": true,
+        "spoiler_reason": "The candidate background explicitly cites Chapter 4 and reveals that Bingley's fortune was acquired by trade, that his sisters would rather forget it, and that he is renting rather than inheriting—information the reader only learns later.",
+        "spoiler": true,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 589,
+        "outputTokens": 1603,
+        "costUsd": 0.0035626800000000004
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-chaise",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 9,
+        "selection": "chaise and four",
+        "sentence": "“Why, my dear, you must know, Mrs. Long says that Netherfield is taken by a young man of large fortune from the north of England; that he came down on Monday in a chaise and four to see the place, and was so much delighted with it that he agreed with Mr. Morris immediately; that he is to take possession before Michaelmas, and some of his servants are to be in the house by the end of next week.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "A fast closed carriage pulled by four horses: arriving in style.",
+        "background": "A post-chaise was a light carriage hired for travel. Two horses were usual; paying for four meant more speed and more show. Mrs. Bennet mentions it because it signals money, much as arriving in an expensive car would today.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "A fast closed carriage pulled by four horses: arriving in style.",
+        "more": "A post-chaise was a light carriage hired for travel. Two horses were usual; paying for four meant more speed and more show. Mrs. Bennet mentions it because it signals money, much as arriving in an expensive car would today."
+      },
+      "checks": {
+        "meaningWords": 11,
+        "backgroundSentences": 4,
+        "short": false,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning accurately conveys that a chaise and four is a fast closed carriage pulled by four horses, which matches the reference's sense of arriving in style.",
+        "correct": true,
+        "spoiler_reason": "The note only explains the contemporary meaning of the phrase and why Mrs. Bennet mentions it; it does not reveal any later events or character developments.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 544,
+        "outputTokens": 473,
+        "costUsd": 0.00129558
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-michaelmas",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 9,
+        "selection": "Michaelmas",
+        "sentence": "“Why, my dear, you must know, Mrs. Long says that Netherfield is taken by a young man of large fortune from the north of England; that he came down on Monday in a chaise and four to see the place, and was so much delighted with it that he agreed with Mr. Morris immediately; that he is to take possession before Michaelmas, and some of his servants are to be in the house by the end of next week.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "The feast of St. Michael, 29 September, when rents fell due and new leases began.",
+        "background": "Michaelmas was one of England's four “quarter days,” with Lady Day, Midsummer and Christmas, when rents were paid and tenancies started. So Bingley will move in by the end of September. Say it MICK-ul-mus.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "The feast of St. Michael, 29 September, when rents fell due and new leases began.",
+        "more": "Michaelmas was one of England's four “quarter days,” with Lady Day, Midsummer and Christmas, when rents were paid and tenancies started. So Bingley will move in by the end of September. Say it MICK-ul-mus."
+      },
+      "checks": {
+        "meaningWords": 15,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning exactly matches the reference: it identifies Michaelmas as the feast of St. Michael on 29 September and notes rents and leases. This gives the same sense in the sentence.",
+        "correct": true,
+        "spoiler_reason": "The background only explains quarter days and restates information already given in the sentence, that Bingley will take possession before Michaelmas. It does not reveal anything later in the novel.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 563,
+        "outputTokens": 326,
+        "costUsd": 0.00101706
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-thousand-a-year",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 13,
+        "selection": "four or five thousand a year",
+        "sentence": "A single man of large fortune; four or five thousand a year."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "His yearly income, enough to make him one of the richest men around.",
+        "background": "Incomes were quoted per year, from capital invested at about four or five per cent, so this suggests a fortune near £100,000. For scale: Mr. Bennet's estate brings in £2,000 a year, and in Chapter 3 the room hears that Mr. Darcy has £10,000.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "His yearly income, enough to make him one of the richest men around.",
+        "more": "Incomes were quoted per year, from capital invested at about four or five per cent, so this suggests a fortune near £100,000. For scale: Mr. Bennet's estate brings in £2,000 a year, and in Chapter 3 the room hears that Mr. Darcy has £10,000."
+      },
+      "checks": {
+        "meaningWords": 13,
+        "backgroundSentences": 4,
+        "short": false,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning exactly captures the sense of the selection: it refers to his yearly income, enough to make him one of the richest men around.",
+        "correct": true,
+        "spoiler_reason": "The candidate's background mentions details from later chapters, specifically Mr. Darcy having £10,000 in Chapter 3 and Mr. Bennet's estate bringing in £2,000 a year (Chapter 7), which the reader has not yet reached.",
+        "spoiler": true,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 503,
+        "outputTokens": 775,
+        "costUsd": 0.00186648
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-tiresome",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 15,
+        "selection": "tiresome",
+        "sentence": "“My dear Mr. Bennet,” replied his wife, “how can you be so tiresome?"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Annoying and wearing to deal with.",
+        "background": "Tire + -some (“tending to”), like troublesome and irksome. Mrs. Bennet uses it whenever her husband refuses to play along, which is often.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Annoying and wearing to deal with.",
+        "more": "Tire + -some (“tending to”), like troublesome and irksome. Mrs. Bennet uses it whenever her husband refuses to play along, which is often."
+      },
+      "checks": {
+        "meaningWords": 6,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning matches the reference exactly: 'annoying and wearing to deal with' captures the sense of 'tiresome' in this sentence.",
+        "correct": true,
+        "spoiler_reason": "The note's generalization that Mrs. Bennet uses the word whenever her husband refuses to play along (which is often) is consistent with what has already been shown in the conversation up to this point and does not reveal later events.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 434,
+        "outputTokens": 1019,
+        "costUsd": 0.00230406
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-design",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 16,
+        "selection": "design",
+        "sentence": "“Is that his design in settling here?”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Plan or intention.",
+        "background": "“Is that his design?” means “Is that why he's moving here?” Today design is mostly about drawing or making things; the old sense lives on in “by design” and “to have designs on someone.” Mrs. Bennet hears scheming in it, hence “Design? Nonsense.”",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Plan or intention.",
+        "more": "“Is that his design?” means “Is that why he's moving here?” Today design is mostly about drawing or making things; the old sense lives on in “by design” and “to have designs on someone.” Mrs. Bennet hears scheming in it, hence “Design? Nonsense.”"
+      },
+      "checks": {
+        "meaningWords": 3,
+        "backgroundSentences": 6,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning and background are identical to the reference, giving the same sense of 'design' as plan or intention and noting the old sense and Mrs. Bennet's reaction.",
+        "correct": true,
+        "spoiler_reason": "The candidate only discusses the current sentence and context; it does not mention or hint at future events or revelations.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 469,
+        "outputTokens": 518,
+        "costUsd": 0.00133518
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-visit",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 17,
+        "selection": "you must visit him",
+        "sentence": "But it is very likely that he may fall in love with one of them, and therefore you must visit him as soon as he comes.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "Etiquette: the man of the family had to call on a newcomer first.",
+        "background": "A gentleman paid the first call on a new neighbour. Only after that could his wife and daughters be introduced and meet the newcomer socially. Without Mr. Bennet's visit, the girls can't properly know Bingley at all, which is why Mrs. Bennet is so desperate.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "Etiquette: the man of the family had to call on a newcomer first.",
+        "more": "A gentleman paid the first call on a new neighbour. Only after that could his wife and daughters be introduced and meet the newcomer socially. Without Mr. Bennet's visit, the girls can't properly know Bingley at all, which is why Mrs. Bennet is so desperate."
+      },
+      "checks": {
+        "meaningWords": 13,
+        "backgroundSentences": 5,
+        "short": false,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "Candidate's meaning and background accurately explain the custom referenced: the head of household must make the first call, and without it the family cannot be introduced; this matches the reference and adds no incorrect information.",
+        "correct": true,
+        "spoiler_reason": "The note only describes contemporaneous social etiquette and its immediate implication for Mrs. Bennet's urgency, with no mention of future plot developments or character revelations.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 502,
+        "outputTokens": 803,
+        "costUsd": 0.00192126
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-engage",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 22,
+        "selection": "more than I engage for",
+        "sentence": "“It is more than I engage for, I assure you.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "More than I promise to do.",
+        "background": "To engage for something is to commit to it, the same root as an engagement, a promise to marry. Mr. Bennet is dodging, politely and on purpose.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "More than I promise to do.",
+        "more": "To engage for something is to commit to it, the same root as an engagement, a promise to marry. Mr. Bennet is dodging, politely and on purpose."
+      },
+      "checks": {
+        "meaningWords": 6,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning is identical in sense to the reference, and the background provides the same accurate explanation of 'engage for' and Mr. Bennet's evasive manner.",
+        "correct": true,
+        "spoiler_reason": "The note only explains the current sentence and character behavior already evident in Chapter 1; it does not reveal or hint at any future events or revelations.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 427,
+        "outputTokens": 549,
+        "costUsd": 0.0013688399999999999
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-establishment",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 23,
+        "selection": "establishment",
+        "sentence": "Only think what an establishment it would be for one of them."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "A settled married life: a home, an income and a place in society.",
+        "background": "In Austen, a young woman's establishment is the position marriage gives her. Today the word usually means an organisation or “the powers that be.” Mrs. Bennet is talking about a rich husband.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "A settled married life: a home, an income and a place in society.",
+        "more": "In Austen, a young woman's establishment is the position marriage gives her. Today the word usually means an organisation or “the powers that be.” Mrs. Bennet is talking about a rich husband."
+      },
+      "checks": {
+        "meaningWords": 13,
+        "backgroundSentences": 4,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning is identical to the reference meaning and accurately conveys the sense of 'establishment' as a settled married life with social and financial position.",
+        "correct": true,
+        "spoiler_reason": "The candidate's background does not mention any future events or revelations; it only explains the contemporary meaning of the word and the immediate context, which is known to the reader at this point.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 449,
+        "outputTokens": 954,
+        "costUsd": 0.00218526
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-lucas",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 23,
+        "selection": "Sir William and Lady Lucas",
+        "sentence": "Sir William and Lady Lucas are determined to go, merely on that account; for in general, you know, they visit no new comers."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "A knight and his wife: an honour for him, not a title his son inherits.",
+        "background": "Chapter 5 explains that Sir William made his money in trade and was knighted while mayor of the local town. “Sir” is personal and ends with him. The Lucases are the Bennets' nearest neighbours, and their daughter Charlotte is Elizabeth's closest friend.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "A knight and his wife: an honour for him, not a title his son inherits.",
+        "more": "Chapter 5 explains that Sir William made his money in trade and was knighted while mayor of the local town. “Sir” is personal and ends with him. The Lucases are the Bennets' nearest neighbours, and their daughter Charlotte is Elizabeth's closest friend."
+      },
+      "checks": {
+        "meaningWords": 15,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate meaning exactly matches the reference meaning, giving the same sense of Sir William's title and its non-inheritance.",
+        "correct": true,
+        "spoiler_reason": "The candidate background explicitly references Chapter 5 and reveals details (trade background, knighthood while mayor, Charlotte as Elizabeth's friend) that the reader has not yet encountered at this point.",
+        "spoiler": true,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 502,
+        "outputTokens": 1785,
+        "costUsd": 0.00386562
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-scrupulous",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 24,
+        "selection": "over scrupulous",
+        "sentence": "“You are over scrupulous, surely."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Too worried about doing exactly the proper thing.",
+        "background": "A scruple is a small doubt about what's right or proper. Mr. Bennet teases his wife for being fussy about etiquette, the very etiquette she has just insisted on. We'd now write it with a hyphen: over-scrupulous.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Too worried about doing exactly the proper thing.",
+        "more": "A scruple is a small doubt about what's right or proper. Mr. Bennet teases his wife for being fussy about etiquette, the very etiquette she has just insisted on. We'd now write it with a hyphen: over-scrupulous."
+      },
+      "checks": {
+        "meaningWords": 8,
+        "backgroundSentences": 4,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning and background together match the reference: the meaning is 'too worried about doing exactly the proper thing,' and the background explains the word and teases Mrs. Bennet for fussing over etiquette.",
+        "correct": true,
+        "spoiler_reason": "The candidate does not mention anything beyond the current position; it stays within the immediate context.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 461,
+        "outputTokens": 385,
+        "costUsd": 0.00106656
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-quickness",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 26,
+        "selection": "quickness",
+        "sentence": "“They have none of them much to recommend them,” replied he: “they are all silly and ignorant like other girls; but Lizzy has something more of quickness than her sisters.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Quickness of mind: sharpness and wit.",
+        "background": "Austen's quick often means lively or clever, as in quick-witted. Mr. Bennet singles out Elizabeth, and the book will prove him right. Compare “quick parts” at the end of this chapter.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Quickness of mind: sharpness and wit.",
+        "more": "Austen's quick often means lively or clever, as in quick-witted. Mr. Bennet singles out Elizabeth, and the book will prove him right. Compare “quick parts” at the end of this chapter."
+      },
+      "checks": {
+        "meaningWords": 6,
+        "backgroundSentences": 4,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning matches the reference exactly: quickness of mind, sharpness and wit. The background accurately explains Austen's use of 'quick' and notes Mr. Bennet's singling out Elizabeth, which is consistent with the reference.",
+        "correct": true,
+        "spoiler_reason": "The candidate's background includes the statement that 'the book will prove him right' and a cross-reference to 'quick parts' at the end of the chapter. These are not specific plot revelations but general textual references, and the reference includes the same phrases, so they do not constitute spoilers.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 471,
+        "outputTokens": 985,
+        "costUsd": 0.00226116
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-quick-parts",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 33,
+        "selection": "quick parts",
+        "sentence": "Mr. Bennet was so odd a mixture of quick parts, sarcastic humour, reserve, and caprice, that the experience of three-and-twenty years had been insufficient to make his wife understand his character."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "A sharp mind. Parts here means abilities.",
+        "background": "A “man of parts” was a talented, clever man; the phrase is about the only place this sense survives. Austen sums Mr. Bennet up in four words: clever, sarcastic, reserved and unpredictable.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "A sharp mind. Parts here means abilities.",
+        "more": "A “man of parts” was a talented, clever man; the phrase is about the only place this sense survives. Austen sums Mr. Bennet up in four words: clever, sarcastic, reserved and unpredictable."
+      },
+      "checks": {
+        "meaningWords": 7,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning matches the reference: 'A sharp mind. Parts here means abilities.' Both explain that 'parts' refers to mental abilities, and the background adds the same historical phrase and character summary from the sentence.",
+        "correct": true,
+        "spoiler_reason": "The candidate's meaning and background only describe information given in the current sentence and paragraph: Mr. Bennet's character traits as clever, sarcastic, reserved, and unpredictable. There is no mention of later events or revelations.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 472,
+        "outputTokens": 317,
+        "costUsd": 0.0009391800000000001
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-caprice",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 33,
+        "selection": "caprice",
+        "sentence": "Mr. Bennet was so odd a mixture of quick parts, sarcastic humour, reserve, and caprice, that the experience of three-and-twenty years had been insufficient to make his wife understand his character."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Sudden, unpredictable changes of mood or mind.",
+        "background": "The adjective is capricious. It comes from the Italian capriccio and is a cousin of whim. Say it ka-PREES.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Sudden, unpredictable changes of mood or mind.",
+        "more": "The adjective is capricious. It comes from the Italian capriccio and is a cousin of whim. Say it ka-PREES."
+      },
+      "checks": {
+        "meaningWords": 7,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning gives the same sense as the reference, defining caprice as sudden unpredictable changes of mood or mind.",
+        "correct": true,
+        "spoiler_reason": "Neither meaning nor background mentions or hints at later events or revelations; it only explains the word's definition and etymology.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 446,
+        "outputTokens": 318,
+        "costUsd": 0.000924
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-develope",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 33,
+        "selection": "develope",
+        "sentence": "Her mind was less difficult to develope."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "An old spelling of develop. Here it means to work out or understand.",
+        "background": "Her mind was easy to develope: easy to unfold and see into. The final -e was a normal spelling in 1813, so it isn't a typo.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "An old spelling of develop. Here it means to work out or understand.",
+        "more": "Her mind was easy to develope: easy to unfold and see into. The final -e was a normal spelling in 1813, so it isn't a typo."
+      },
+      "checks": {
+        "meaningWords": 13,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning matches the reference: it identifies 'develope' as an old spelling of 'develop' and gives the sense 'to work out or understand', which fits the sentence. The background also accurately restates that her mind was easy to unfold and see into, and notes the spelling is not a typo.",
+        "correct": true,
+        "spoiler_reason": "The candidate only explains the spelling and meaning in the context of the sentence; it does not mention or hint at any later events, character revelations, or relationship outcomes beyond this point.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 437,
+        "outputTokens": 680,
+        "costUsd": 0.0016348200000000002
+      },
+      "pass": true
+    },
+    {
+      "id": "c1-mean-understanding",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 33,
+        "selection": "mean understanding",
+        "sentence": "She was a woman of mean understanding, little information, and uncertain temper."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Limited intelligence. Mean here means poor or small, not unkind.",
+        "background": "Understanding means intellect, and mean is used in its old sense of inferior, as in “no mean feat.” It's a blunt verdict on Mrs. Bennet from a narrator who is usually more sly.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Limited intelligence. Mean here means poor or small, not unkind.",
+        "more": "Understanding means intellect, and mean is used in its old sense of inferior, as in “no mean feat.” It's a blunt verdict on Mrs. Bennet from a narrator who is usually more sly."
+      },
+      "checks": {
+        "meaningWords": 10,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning and background accurately capture the sense of 'mean understanding' as limited intelligence, with 'mean' meaning poor or inferior and 'understanding' meaning intellect. It matches the reference's point and adds no false information.",
+        "correct": true,
+        "spoiler_reason": "The candidate's note does not mention or hint at any later events, revelations, or character developments beyond this point in the novel. It only comments on the narrator's style in general terms.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 451,
+        "outputTokens": 500,
+        "costUsd": 0.0012876600000000001
+      },
+      "pass": false
+    },
+    {
+      "id": "c1-temper",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 33,
+        "selection": "uncertain temper",
+        "sentence": "She was a woman of mean understanding, little information, and uncertain temper."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Unpredictable moods.",
+        "background": "Temper here means usual state of mind, close to temperament, not just anger. Good-tempered still means easy-going.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Unpredictable moods.",
+        "more": "Temper here means usual state of mind, close to temperament, not just anger. Good-tempered still means easy-going."
+      },
+      "checks": {
+        "meaningWords": 2,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate meaning and background accurately match the reference, explaining that 'uncertain temper' means unpredictable moods and that 'temper' here refers to usual state of mind or temperament, not just anger.",
+        "correct": true,
+        "spoiler_reason": "The note only explains the sense of the phrase in this sentence and general usage; it does not foreshadow or reveal any future events or character developments.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 402,
+        "outputTokens": 512,
+        "costUsd": 0.00127908
+      },
+      "pass": true
+    },
+    {
+      "id": "c1-solace",
+      "type": "gloss",
+      "passage": {
+        "chapter": 1,
+        "paragraph": 33,
+        "selection": "solace",
+        "sentence": "The business of her life was to get her daughters married: its solace was visiting and news."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Comfort in hard times.",
+        "background": "Say it SOL-iss. Her life's work is marrying off five daughters; her comfort is visiting and gossip.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Comfort in hard times.",
+        "more": "Say it SOL-iss. Her life's work is marrying off five daughters; her comfort is visiting and gossip."
+      },
+      "checks": {
+        "meaningWords": 4,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate meaning 'Comfort in hard times' matches the reference meaning exactly. The background also includes the pronunciation and the same context about Mrs. Bennet's life's work and comfort.",
+        "correct": true,
+        "spoiler_reason": "The candidate does not mention any later events or revelations. It only restates information from this sentence and earlier context.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 402,
+        "outputTokens": 267,
+        "costUsd": 0.00079398
+      },
+      "pass": true
+    },
+    {
+      "id": "c2-waited-on",
+      "type": "gloss",
+      "passage": {
+        "chapter": 2,
+        "paragraph": 0,
+        "selection": "waited on",
+        "sentence": "Mr. Bennet was among the earliest of those who waited on Mr. Bingley."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Paid a formal visit to.",
+        "background": "To wait on someone here means to call on them, not to serve them. So Mr. Bennet did visit after all, as Chapter 1 hinted, and simply didn't tell anyone.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Paid a formal visit to.",
+        "more": "To wait on someone here means to call on them, not to serve them. So Mr. Bennet did visit after all, as Chapter 1 hinted, and simply didn't tell anyone."
+      },
+      "checks": {
+        "meaningWords": 5,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate meaning 'Paid a formal visit to' accurately captures the sense of 'waited on' in this sentence, matching the reference.",
+        "correct": true,
+        "spoiler_reason": "The candidate background says Mr. Bennet 'simply didn't tell anyone,' which is a fact revealed only later in Chapter 2, after this position.",
+        "spoiler": true,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 437,
+        "outputTokens": 2421,
+        "costUsd": 0.005082
+      },
+      "pass": false
+    },
+    {
+      "id": "c2-trimming",
+      "type": "gloss",
+      "passage": {
+        "chapter": 2,
+        "paragraph": 0,
+        "selection": "trimming a hat",
+        "sentence": "Observing his second daughter employed in trimming a hat, he suddenly addressed her with,--"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "Decorating a hat with ribbons, lace or flowers, a common home craft.",
+        "background": "Women often bought plain hats and bonnets and trimmed them themselves, changing the trimming to suit the season or a party. In Chapter 39, Lydia buys an ugly bonnet just to pull it apart and make it up again.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "Decorating a hat with ribbons, lace or flowers, a common home craft.",
+        "more": "Women often bought plain hats and bonnets and trimmed them themselves, changing the trimming to suit the season or a party. In Chapter 39, Lydia buys an ugly bonnet just to pull it apart and make it up again."
+      },
+      "checks": {
+        "meaningWords": 12,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning is identical to the reference, accurately conveying that trimming a hat means decorating it with ribbons, lace, or flowers as a common home craft.",
+        "correct": true,
+        "spoiler_reason": "The candidate's background explicitly mentions an event from Chapter 39 (Lydia buying an ugly bonnet to pull apart), which occurs later in the book than the current position, thus revealing information the reader has not yet encountered.",
+        "spoiler": true,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 470,
+        "outputTokens": 651,
+        "costUsd": 0.00159918
+      },
+      "pass": false
+    },
+    {
+      "id": "c2-assemblies",
+      "type": "gloss",
+      "passage": {
+        "chapter": 2,
+        "paragraph": 3,
+        "selection": "the assemblies",
+        "sentence": "“But you forget, mamma,” said Elizabeth, “that we shall meet him at the assemblies, and that Mrs. Long has promised to introduce him.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "Public balls held in the town's assembly rooms.",
+        "background": "Local gentry bought tickets to dances in a public hall, so an assembly was the one place a newcomer could meet the whole neighbourhood at once. The Meryton assembly in Chapter 3 is where Elizabeth first sees Mr. Darcy.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "Public balls held in the town's assembly rooms.",
+        "more": "Local gentry bought tickets to dances in a public hall, so an assembly was the one place a newcomer could meet the whole neighbourhood at once. The Meryton assembly in Chapter 3 is where Elizabeth first sees Mr. Darcy."
+      },
+      "checks": {
+        "meaningWords": 8,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning defines 'the assemblies' as public balls in assembly rooms, which matches the reference's sense in this sentence.",
+        "correct": true,
+        "spoiler_reason": "The candidate background states that the Meryton assembly in Chapter 3 is where Elizabeth first sees Mr. Darcy. At this position (Chapter 2, paragraph 4), the reader has not yet met Darcy or learned of that future event, so it spoils later content.",
+        "spoiler": true,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 473,
+        "outputTokens": 1291,
+        "costUsd": 0.0028683599999999995
+      },
+      "pass": false
+    },
+    {
+      "id": "c2-deigned",
+      "type": "gloss",
+      "passage": {
+        "chapter": 2,
+        "paragraph": 6,
+        "selection": "deigned not",
+        "sentence": "Mrs. Bennet deigned not to make any reply; but, unable to contain herself, began scolding one of her daughters."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Wouldn't lower herself to.",
+        "background": "To deign is to do something you consider beneath you, as a favour. “Deigned not to make any reply” is sulking, in Austen's dry phrasing. Related words: disdain, condescend.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Wouldn't lower herself to.",
+        "more": "To deign is to do something you consider beneath you, as a favour. “Deigned not to make any reply” is sulking, in Austen's dry phrasing. Related words: disdain, condescend."
+      },
+      "checks": {
+        "meaningWords": 4,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning and background are identical to the reference, accurately explaining 'deigned not' in context as refusing to lower herself and noting Austen's dry phrasing and related words.",
+        "correct": true,
+        "spoiler_reason": "The note only explains the phrase's meaning and usage in this sentence; it does not mention or hint at any future events, character revelations, or plot developments.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 456,
+        "outputTokens": 281,
+        "costUsd": 0.0008573400000000001
+      },
+      "pass": false
+    },
+    {
+      "id": "c2-discretion",
+      "type": "gloss",
+      "passage": {
+        "chapter": 2,
+        "paragraph": 8,
+        "selection": "discretion",
+        "sentence": "“Kitty has no discretion in her coughs,” said her father; “she times them ill.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Good judgement about when and how to do something.",
+        "background": "Mr. Bennet's joke treats a cough as if it needed tact: Kitty “times them ill,” meaning badly. Discretion still means judgement or tact, as in “at your discretion.”",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Good judgement about when and how to do something.",
+        "more": "Mr. Bennet's joke treats a cough as if it needed tact: Kitty “times them ill,” meaning badly. Discretion still means judgement or tact, as in “at your discretion.”"
+      },
+      "checks": {
+        "meaningWords": 9,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning matches the reference sense exactly, and the background explains the same joke and usage.",
+        "correct": true,
+        "spoiler_reason": "Neither the meaning nor the background references any future events or reveals anything beyond this sentence and paragraph.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 448,
+        "outputTokens": 267,
+        "costUsd": 0.0008243399999999999
+      },
+      "pass": false
+    },
+    {
+      "id": "c2-fortnight",
+      "type": "gloss",
+      "passage": {
+        "chapter": 2,
+        "paragraph": 10,
+        "selection": "To-morrow fortnight",
+        "sentence": "“To-morrow fortnight.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Two weeks from tomorrow.",
+        "background": "A fortnight is fourteen nights, still everyday British English. To-morrow was the usual spelling then; the hyphen dropped out in the 1900s, as it did in to-day.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Two weeks from tomorrow.",
+        "more": "A fortnight is fourteen nights, still everyday British English. To-morrow was the usual spelling then; the hyphen dropped out in the 1900s, as it did in to-day."
+      },
+      "checks": {
+        "meaningWords": 4,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning matches the reference exactly: 'Two weeks from tomorrow.' The background also accurately explains 'fortnight' as fourteen nights and the historical spelling of 'to-morrow,' which is true and not misleading.",
+        "correct": true,
+        "spoiler_reason": "The note only defines the phrase and discusses spelling; it does not reveal any future plot points or character information beyond what is immediately evident.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 420,
+        "outputTokens": 544,
+        "costUsd": 0.00135432
+      },
+      "pass": true
+    },
+    {
+      "id": "c2-circumspection",
+      "type": "gloss",
+      "passage": {
+        "chapter": 2,
+        "paragraph": 14,
+        "selection": "circumspection",
+        "sentence": "“I honour your circumspection."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Caution; thinking carefully before acting.",
+        "background": "From Latin for “looking around.” Mr. Bennet “honours” his wife's caution with mock seriousness, since she has been anything but cautious about Mr. Bingley.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Caution; thinking carefully before acting.",
+        "more": "From Latin for “looking around.” Mr. Bennet “honours” his wife's caution with mock seriousness, since she has been anything but cautious about Mr. Bingley."
+      },
+      "checks": {
+        "meaningWords": 5,
+        "backgroundSentences": 4,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning matches the reference exactly, giving the same sense of 'caution; thinking carefully before acting' in this sentence.",
+        "correct": true,
+        "spoiler_reason": "The candidate's background repeats the reference's observation about Mrs. Bennet's lack of caution regarding Mr. Bingley, which is evident from the text up to this position and does not reveal later events.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 422,
+        "outputTokens": 509,
+        "costUsd": 0.00128634
+      },
+      "pass": false
+    },
+    {
+      "id": "c2-office",
+      "type": "gloss",
+      "passage": {
+        "chapter": 2,
+        "paragraph": 14,
+        "selection": "decline the office",
+        "sentence": "But if we do not venture, somebody else will; and after all, Mrs. Long and her nieces must stand their chance; and, therefore, as she will think it an act of kindness, if you decline the office, I will take it on myself.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Turn down the task (here, making the introduction).",
+        "background": "Office here means a duty or service, as in “through the good offices of a friend.” Mr. Bennet offers to introduce Bingley to Mrs. Long, which is absurd, since Mrs. Long was supposed to introduce him to them.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Turn down the task (here, making the introduction).",
+        "more": "Office here means a duty or service, as in “through the good offices of a friend.” Mr. Bennet offers to introduce Bingley to Mrs. Long, which is absurd, since Mrs. Long was supposed to introduce him to them."
+      },
+      "checks": {
+        "meaningWords": 8,
+        "backgroundSentences": 5,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate meaning captures the sense of 'decline the office' as turning down the task of making the introduction, and the background correctly explains 'office' as a duty/service and notes the absurdity that Mrs. Long was supposed to introduce Bingley to them.",
+        "correct": true,
+        "spoiler_reason": "The note only discusses the immediate context of this sentence and paragraph; it does not mention later events, such as Mr. Bennet having already visited Bingley, which is revealed after this position.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 503,
+        "outputTokens": 2753,
+        "costUsd": 0.00578292
+      },
+      "pass": false
+    },
+    {
+      "id": "c2-introduction",
+      "type": "gloss",
+      "passage": {
+        "chapter": 2,
+        "paragraph": 16,
+        "selection": "the forms of introduction",
+        "sentence": "“Do you consider the forms of introduction, and the stress that is laid on them, as nonsense?"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "The rules for who could be introduced to whom, and by whom.",
+        "background": "You couldn't simply walk up to a stranger at a ball. A mutual acquaintance had to introduce you, and only after that could you talk, call or dance together. The whole chapter turns on who will introduce Mr. Bingley.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "The rules for who could be introduced to whom, and by whom.",
+        "more": "You couldn't simply walk up to a stranger at a ball. A mutual acquaintance had to introduce you, and only after that could you talk, call or dance together. The whole chapter turns on who will introduce Mr. Bingley."
+      },
+      "checks": {
+        "meaningWords": 12,
+        "backgroundSentences": 4,
+        "short": false,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning matches the reference exactly: both state the rules for who could be introduced to whom and by whom. The background is also identical, so no discrepancy in sense.",
+        "correct": true,
+        "spoiler_reason": "The candidate's background mentions that the whole chapter turns on who will introduce Mr. Bingley, but that is already evident in the text up to this position, as the chapter discusses introductions and the ball. No future events or revelations are hinted at.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 469,
+        "outputTokens": 580,
+        "costUsd": 0.00145794
+      },
+      "pass": false
+    },
+    {
+      "id": "c2-extracts",
+      "type": "gloss",
+      "passage": {
+        "chapter": 2,
+        "paragraph": 16,
+        "selection": "make extracts",
+        "sentence": "For you are a young lady of deep reflection, I know, and read great books, and make extracts.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "Copy out passages from books, a studious habit.",
+        "background": "Readers kept notebooks of quotations, often called commonplace books. Mary does it to seem learned, and her father is teasing her. He knows she has nothing to say, and so does Austen.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "Copy out passages from books, a studious habit.",
+        "more": "Readers kept notebooks of quotations, often called commonplace books. Mary does it to seem learned, and her father is teasing her. He knows she has nothing to say, and so does Austen."
+      },
+      "checks": {
+        "meaningWords": 8,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate meaning gives only the literal definition of 'make extracts' as copying out passages. It misses the reference's point about the irony: Mr. Bennet is teasing Mary for her pedantic habit, implying she copies without real understanding. In this sentence, that ironic context is part of the sense.",
+        "correct": false,
+        "spoiler_reason": "The candidate background mentions that Mary does it to seem learned and that her father teases her, but this is already evident from Chapter 1's description of Mary as pedantic and Mr. Bennet's sarcastic character. It does not reveal any later events or character developments.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 447,
+        "outputTokens": 3503,
+        "costUsd": 0.00723096
+      },
+      "pass": false
+    },
+    {
+      "id": "c2-escape",
+      "type": "gloss",
+      "passage": {
+        "chapter": 2,
+        "paragraph": 20,
+        "selection": "escape the acquaintance",
+        "sentence": "It is very unlucky; but as I have actually paid the visit, we cannot escape the acquaintance now.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "Once a call was paid, the two families were officially acquainted.",
+        "background": "A first visit created a social tie that couldn't politely be undone. Mr. Bennet pretends to regret it, the punchline of a joke he has been setting up since Chapter 1.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "Once a call was paid, the two families were officially acquainted.",
+        "more": "A first visit created a social tie that couldn't politely be undone. Mr. Bennet pretends to regret it, the punchline of a joke he has been setting up since Chapter 1."
+      },
+      "checks": {
+        "meaningWords": 11,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning accurately captures the same sense as the reference: paying the visit creates an acquaintance that cannot be avoided. The background matches the reference and is true.",
+        "correct": true,
+        "spoiler_reason": "The candidate only refers to events and the joke setup from Chapter 1 and the current sentence, which the reader has already encountered. No later plot points or revelations are mentioned.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 455,
+        "outputTokens": 537,
+        "costUsd": 0.00136356
+      },
+      "pass": false
+    },
+    {
+      "id": "c2-raptures",
+      "type": "gloss",
+      "passage": {
+        "chapter": 2,
+        "paragraph": 23,
+        "selection": "raptures",
+        "sentence": "“Now, Kitty, you may cough as much as you choose,” said Mr. Bennet; and, as he spoke, he left the room, fatigued with the raptures of his wife."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Wild outbursts of delight.",
+        "background": "Rapture is intense joy, from the same root as rapt. Being “fatigued with the raptures of his wife” sums up the Bennet marriage in seven words.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Wild outbursts of delight.",
+        "more": "Rapture is intense joy, from the same root as rapt. Being “fatigued with the raptures of his wife” sums up the Bennet marriage in seven words."
+      },
+      "checks": {
+        "meaningWords": 4,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning matches the reference exactly, defining 'raptures' as wild outbursts of delight, which fits the sentence.",
+        "correct": true,
+        "spoiler_reason": "The background comment about summing up the Bennet marriage is an interpretive observation based on what the reader has already seen in Chapters 1 and 2, not hinting at future events or revelations.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 452,
+        "outputTokens": 429,
+        "costUsd": 0.00114774
+      },
+      "pass": true
+    },
+    {
+      "id": "c2-amends",
+      "type": "gloss",
+      "passage": {
+        "chapter": 2,
+        "paragraph": 24,
+        "selection": "make him amends",
+        "sentence": "“I do not know how you will ever make him amends for his kindness; or me either, for that matter."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Repay him, make it up to him.",
+        "background": "We still say “make amends,” though usually for a wrong, not a kindness. Mrs. Bennet uses it for gratitude, and adds herself to the people who deserve thanks.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Repay him, make it up to him.",
+        "more": "We still say “make amends,” though usually for a wrong, not a kindness. Mrs. Bennet uses it for gratitude, and adds herself to the people who deserve thanks."
+      },
+      "checks": {
+        "meaningWords": 7,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning gives the same sense as the reference: repaying him or making it up to him. The background also matches the reference's note about the usual use of 'make amends' and Mrs. Bennet's extension of gratitude to herself.",
+        "correct": true,
+        "spoiler_reason": "The candidate does not mention or hint at any events, revelations, or character developments that occur after this point in the novel.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 447,
+        "outputTokens": 810,
+        "costUsd": 0.0018988199999999998
+      },
+      "pass": false
+    },
+    {
+      "id": "c2-stoutly",
+      "type": "gloss",
+      "passage": {
+        "chapter": 2,
+        "paragraph": 25,
+        "selection": "stoutly",
+        "sentence": "“Oh,” said Lydia, stoutly, “I am not afraid; for though I am the youngest, I’m the tallest.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Boldly and firmly, not “fatly.”",
+        "background": "Stout first meant brave or strong, as in “stout-hearted.” The sense of heavy-set came later. Lydia's confidence is the point, and it will matter later in the book.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Boldly and firmly, not “fatly.”",
+        "more": "Stout first meant brave or strong, as in “stout-hearted.” The sense of heavy-set came later. Lydia's confidence is the point, and it will matter later in the book."
+      },
+      "checks": {
+        "meaningWords": 5,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning and background give the same sense as the reference: 'stoutly' means boldly and firmly, not fatly, and the etymology and point about Lydia's confidence are accurately stated.",
+        "correct": true,
+        "spoiler_reason": "The note says Lydia's confidence 'will matter later in the book,' which is a vague statement of future importance, not a specific spoiler; it does not reveal later events or character developments.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 457,
+        "outputTokens": 1033,
+        "costUsd": 0.00234696
+      },
+      "pass": false
+    },
+    {
+      "id": "c2-conjecturing",
+      "type": "gloss",
+      "passage": {
+        "chapter": 2,
+        "paragraph": 26,
+        "selection": "conjecturing",
+        "sentence": "The rest of the evening was spent in conjecturing how soon he would return Mr. Bennet’s visit, and determining when they should ask him to dinner."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Guessing, speculating.",
+        "background": "A conjecture is a guess made without proof. A more formal word than guessing, which suits Austen's mock-solemn tone about a very trivial question.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Guessing, speculating.",
+        "more": "A conjecture is a guess made without proof. A more formal word than guessing, which suits Austen's mock-solemn tone about a very trivial question."
+      },
+      "checks": {
+        "meaningWords": 2,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning and background match the reference exactly: 'conjecturing' means guessing or speculating, a formal word for a guess made without proof, and the note correctly identifies Austen's mock-solemn tone about a trivial question.",
+        "correct": true,
+        "spoiler_reason": "The note does not mention or hint at any future events, character revelations, or outcomes beyond what is already stated in this sentence and paragraph.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 432,
+        "outputTokens": 355,
+        "costUsd": 0.00098802
+      },
+      "pass": true
+    },
+    {
+      "id": "c2-return-visit",
+      "type": "gloss",
+      "passage": {
+        "chapter": 2,
+        "paragraph": 26,
+        "selection": "return Mr. Bennet’s visit",
+        "sentence": "The rest of the evening was spent in conjecturing how soon he would return Mr. Bennet’s visit, and determining when they should ask him to dinner."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "Etiquette again: the newcomer must call back.",
+        "background": "After a first call, the visited person returned it within a few days, and only then could dinner invitations follow. The Bennets are counting the steps of a ritual everyone knew by heart.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "Etiquette again: the newcomer must call back.",
+        "more": "After a first call, the visited person returned it within a few days, and only then could dinner invitations follow. The Bennets are counting the steps of a ritual everyone knew by heart."
+      },
+      "checks": {
+        "meaningWords": 7,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate meaning states the same general etiquette point as the reference: the newcomer must return the call. It matches the sense of the selection in this sentence.",
+        "correct": true,
+        "spoiler_reason": "The candidate only explains a general custom known at this point and does not mention any later events or revelations.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 460,
+        "outputTokens": 456,
+        "costUsd": 0.00120648
+      },
+      "pass": true
+    },
+    {
+      "id": "c3-intelligence",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 0,
+        "selection": "second-hand intelligence",
+        "sentence": "They attacked him in various ways, with barefaced questions, ingenious suppositions, and distant surmises; but he eluded the skill of them all; and they were at last obliged to accept the second-hand intelligence of their neighbour, Lady Lucas."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "News passed on by someone else.",
+        "background": "Intelligence here means information, a sense that survives in military and spy intelligence. Mr. Bennet won't describe Bingley, so the family has to make do with Lady Lucas's report.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "News passed on by someone else.",
+        "more": "Intelligence here means information, a sense that survives in military and spy intelligence. Mr. Bennet won't describe Bingley, so the family has to make do with Lady Lucas's report."
+      },
+      "checks": {
+        "meaningWords": 6,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning accurately conveys that 'second-hand intelligence' means news passed on by someone else, which matches the reference's sense in this sentence.",
+        "correct": true,
+        "spoiler_reason": "The candidate's background only restates information already established in the text up to this point (Mr. Bennet won't describe Bingley) and explains the word 'intelligence'; it does not reveal any later events or developments.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 470,
+        "outputTokens": 325,
+        "costUsd": 0.0009537
+      },
+      "pass": false
+    },
+    {
+      "id": "c3-town",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 3,
+        "selection": "in town",
+        "sentence": "Mr. Bingley was obliged to be in town the following day, and consequently unable to accept the honour of their invitation, etc."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "“Town” meant London.",
+        "background": "For the gentry, going to town always meant London, where Parliament, fashion and business were. Mrs. Bennet fears that a man who rushes off to London so soon will never settle in the country.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "“Town” meant London.",
+        "more": "For the gentry, going to town always meant London, where Parliament, fashion and business were. Mrs. Bennet fears that a man who rushes off to London so soon will never settle in the country."
+      },
+      "checks": {
+        "meaningWords": 3,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning correctly identifies that 'town' means London, which matches the reference. The background adds accurate context about the gentry and Mrs. Bennet's fears, all of which is consistent with the sentence and known at this point.",
+        "correct": true,
+        "spoiler_reason": "The candidate does not mention any later events, revelations, or character developments. It only explains the term and the immediate social context, which is available to the reader at this point.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 451,
+        "outputTokens": 296,
+        "costUsd": 0.00088374
+      },
+      "pass": false
+    },
+    {
+      "id": "c3-ten-thousand",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 4,
+        "selection": "ten thousand a year",
+        "sentence": "His brother-in-law, Mr. Hurst, merely looked the gentleman; but his friend Mr. Darcy soon drew the attention of the room by his fine, tall person, handsome features, noble mien, and the report, which was in general circulation within five minutes after his entrance, of his having ten thousand a year."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "Twice Mr. Bingley's income, and five times Mr. Bennet's.",
+        "background": "£10,000 a year implies a fortune of about £200,000, which put Darcy among the richest commoners in England. Notice how fast it spreads: “within five minutes after his entrance.” Money is the first thing the room learns about him.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "Twice Mr. Bingley's income, and five times Mr. Bennet's.",
+        "more": "£10,000 a year implies a fortune of about £200,000, which put Darcy among the richest commoners in England. Notice how fast it spreads: “within five minutes after his entrance.” Money is the first thing the room learns about him."
+      },
+      "checks": {
+        "meaningWords": 9,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning provides the same comparative sense of the income as the reference, correctly noting it is twice Bingley's and five times Bennet's.",
+        "correct": true,
+        "spoiler_reason": "The candidate's meaning and background only use information available up to this point and do not hint at future events or revelations.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 534,
+        "outputTokens": 540,
+        "costUsd": 0.00142164
+      },
+      "pass": false
+    },
+    {
+      "id": "c3-mien",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 4,
+        "selection": "noble mien",
+        "sentence": "His brother-in-law, Mr. Hurst, merely looked the gentleman; but his friend Mr. Darcy soon drew the attention of the room by his fine, tall person, handsome features, noble mien, and the report, which was in general circulation within five minutes after his entrance, of his having ten thousand a year."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "A dignified bearing and expression.",
+        "background": "Mien is the way a person looks and carries themselves. It is pronounced like mean, and it is rarely used today outside formal writing.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "A dignified bearing and expression.",
+        "more": "Mien is the way a person looks and carries themselves. It is pronounced like mean, and it is rarely used today outside formal writing."
+      },
+      "checks": {
+        "meaningWords": 5,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning exactly matches the reference's definition of 'noble mien' as a dignified bearing and expression.",
+        "correct": true,
+        "spoiler_reason": "The candidate only defines the phrase and provides pronunciation and usage information, with no reference to later events or revelations.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 460,
+        "outputTokens": 224,
+        "costUsd": 0.00074712
+      },
+      "pass": true
+    },
+    {
+      "id": "c3-disgust",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 4,
+        "selection": "gave a disgust",
+        "sentence": "The gentlemen pronounced him to be a fine figure of a man, the ladies declared he was much handsomer than Mr. Bingley, and he was looked at with great admiration for about half the evening, till his manners gave a disgust which turned the tide of his popularity; for he was discovered to be proud, to be above his company, and above being pleased; and not all his large estate in Derbyshire could save him from having a most forbidding, disagreeable countenance, and being unworthy to be compared with his friend."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Caused offence or distaste.",
+        "background": "In Austen, disgust is often milder than today: strong dislike rather than revulsion. Within one sentence, Darcy goes from admired to disliked. The room's opinion turns as quickly as the gossip about his income spread.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Caused offence or distaste.",
+        "more": "In Austen, disgust is often milder than today: strong dislike rather than revulsion. Within one sentence, Darcy goes from admired to disliked. The room's opinion turns as quickly as the gossip about his income spread."
+      },
+      "checks": {
+        "meaningWords": 4,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning and background match the reference exactly, conveying the same sense of 'gave a disgust' in this sentence.",
+        "correct": true,
+        "spoiler_reason": "The candidate's background only refers to information already presented earlier in the chapter (the gossip about his income) and does not reveal later events.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 534,
+        "outputTokens": 441,
+        "costUsd": 0.00122562
+      },
+      "pass": false
+    },
+    {
+      "id": "c3-derbyshire",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 4,
+        "selection": "Derbyshire",
+        "sentence": "The gentlemen pronounced him to be a fine figure of a man, the ladies declared he was much handsomer than Mr. Bingley, and he was looked at with great admiration for about half the evening, till his manners gave a disgust which turned the tide of his popularity; for he was discovered to be proud, to be above his company, and above being pleased; and not all his large estate in Derbyshire could save him from having a most forbidding, disagreeable countenance, and being unworthy to be compared with his friend."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "A county in the north Midlands, far from the Bennets' Hertfordshire.",
+        "background": "Darcy's estate, Pemberley, is in Derbyshire, near the Peak District's hills and moors. To readers in Hertfordshire, near London, it was a long way off. Elizabeth will see it for herself in Chapter 43. Say it DAR-bee-sher.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "A county in the north Midlands, far from the Bennets' Hertfordshire.",
+        "more": "Darcy's estate, Pemberley, is in Derbyshire, near the Peak District's hills and moors. To readers in Hertfordshire, near London, it was a long way off. Elizabeth will see it for herself in Chapter 43. Say it DAR-bee-sher."
+      },
+      "checks": {
+        "meaningWords": 11,
+        "backgroundSentences": 4,
+        "short": false,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning is identical to the reference, giving the same geographical information: a county in the north Midlands far from Hertfordshire.",
+        "correct": true,
+        "spoiler_reason": "The candidate's background mentions Pemberley, the name of Darcy's estate not yet revealed, and states that Elizabeth will see it in Chapter 43, which is a future event the reader has not yet encountered.",
+        "spoiler": true,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 591,
+        "outputTokens": 2484,
+        "costUsd": 0.00530838
+      },
+      "pass": false
+    },
+    {
+      "id": "c3-slighted",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 5,
+        "selection": "slighted",
+        "sentence": "Amongst the most violent against him was Mrs. Bennet, whose dislike of his general behaviour was sharpened into particular resentment by his having slighted one of her daughters."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Insulted by being ignored or treated as unimportant.",
+        "background": "A slight is a snub. The daughter in question is Elizabeth, and the next scene shows exactly how it happened.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Insulted by being ignored or treated as unimportant.",
+        "more": "A slight is a snub. The daughter in question is Elizabeth, and the next scene shows exactly how it happened."
+      },
+      "checks": {
+        "meaningWords": 8,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning matches the reference's sense of 'slighted' as insulted by being ignored or treated as unimportant.",
+        "correct": true,
+        "spoiler_reason": "The background names Elizabeth as the slighted daughter and says the next scene shows how it happened, but the reader has not yet learned which daughter was slighted or the details of the incident at this point in the text.",
+        "spoiler": true,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 431,
+        "outputTokens": 3304,
+        "costUsd": 0.00682638
+      },
+      "pass": false
+    },
+    {
+      "id": "c3-two-dances",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 6,
+        "selection": "sit down for two dances",
+        "sentence": "Elizabeth Bennet had been obliged, by the scarcity of gentlemen, to sit down for two dances; and during part of that time, Mr. Darcy had been standing near enough for her to overhear a conversation between him and Mr. Bingley, who came from the dance for a few minutes to press his friend to join it."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "Dances came in pairs, so she sat out about half an hour.",
+        "background": "At a ball, a couple danced two dances together in a row, so being asked for “the two next” meant a long stretch side by side. With too few men, some women had to sit down and wait, in full view of the room.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "Dances came in pairs, so she sat out about half an hour.",
+        "more": "At a ball, a couple danced two dances together in a row, so being asked for “the two next” meant a long stretch side by side. With too few men, some women had to sit down and wait, in full view of the room."
+      },
+      "checks": {
+        "meaningWords": 12,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate accurately conveys the reference's point that dances came in pairs, so sitting out two dances means a longer period, and adds true relevant details about the custom and social situation.",
+        "correct": true,
+        "spoiler_reason": "The candidate note only discusses dance customs and the immediate social context; it does not mention or hint at any later events or revelations.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 530,
+        "outputTokens": 380,
+        "costUsd": 0.0011022
+      },
+      "pass": true
+    },
+    {
+      "id": "c3-stand-up",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 8,
+        "selection": "stand up with",
+        "sentence": "Your sisters are engaged, and there is not another woman in the room whom it would not be a punishment to me to stand up with.”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Dance with.",
+        "background": "To stand up with someone is to take your place with them in the line of dancers. Darcy says it would be “a punishment.” Elizabeth is near enough to hear every word.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Dance with.",
+        "more": "To stand up with someone is to take your place with them in the line of dancers. Darcy says it would be “a punishment.” Elizabeth is near enough to hear every word."
+      },
+      "checks": {
+        "meaningWords": 2,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning gives the same sense of 'stand up with' as dancing, and the background matches the reference exactly.",
+        "correct": true,
+        "spoiler_reason": "The candidate's note only explains the phrase and mentions Elizabeth overhearing, which is established at this point in the text and does not reveal future events.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 436,
+        "outputTokens": 346,
+        "costUsd": 0.00097284
+      },
+      "pass": false
+    },
+    {
+      "id": "c3-insupportable",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 8,
+        "selection": "insupportable",
+        "sentence": "At such an assembly as this, it would be insupportable."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Unbearable.",
+        "background": "From support in the old sense of endure. Unbearable is the everyday word now; insupportable sounds stiff, which suits Darcy here.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Unbearable.",
+        "more": "From support in the old sense of endure. Unbearable is the everyday word now; insupportable sounds stiff, which suits Darcy here."
+      },
+      "checks": {
+        "meaningWords": 1,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning 'Unbearable.' is the same as the primary definition in the reference, and it accurately captures the sense of 'insupportable' in this sentence. The additional details in the reference (old sense, stiffness) are provided in the candidate's background, so the note is complete.",
+        "correct": true,
+        "spoiler_reason": "The candidate's meaning and background do not mention or hint at any future events or revelations. The note only explains the word's meaning and stylistic fit for Darcy, which is consistent with what the reader already knows at this point.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 407,
+        "outputTokens": 1718,
+        "costUsd": 0.00367026
+      },
+      "pass": true
+    },
+    {
+      "id": "c3-fastidious",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 9,
+        "selection": "fastidious",
+        "sentence": "“I would not be so fastidious as you are,” cried Bingley, “for a kingdom!"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Very hard to please; fussy.",
+        "background": "Still used today, often about cleanliness or detail. Bingley means it as friendly teasing: Darcy is too picky to enjoy anything.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Very hard to please; fussy.",
+        "more": "Still used today, often about cleanliness or detail. Bingley means it as friendly teasing: Darcy is too picky to enjoy anything."
+      },
+      "checks": {
+        "meaningWords": 5,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning matches the reference: 'Very hard to please; fussy.' It accurately reflects Bingley's teasing of Darcy in this sentence.",
+        "correct": true,
+        "spoiler_reason": "The background only explains current usage and Bingley's intent in this scene; it does not refer to later events or revelations.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 417,
+        "outputTokens": 216,
+        "costUsd": 0.0007029000000000001
+      },
+      "pass": true
+    },
+    {
+      "id": "c3-tolerable",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 12,
+        "selection": "tolerable",
+        "sentence": "“Which do you mean?” and turning round, he looked for a moment at Elizabeth, till, catching her eye, he withdrew his own, and coldly said, “She is tolerable: but not handsome enough to tempt me; and I am in no humour at present to give consequence to young ladies who are slighted by other men."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Passable, just about acceptable. Faint praise that works as an insult.",
+        "background": "Tolerable means good enough to put up with. Said about a woman, within her hearing, it is crushing, and it may be the most famous put-down in English fiction. Watch how often the book comes back to this moment.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Passable, just about acceptable. Faint praise that works as an insult.",
+        "more": "Tolerable means good enough to put up with. Said about a woman, within her hearing, it is crushing, and it may be the most famous put-down in English fiction. Watch how often the book comes back to this moment."
+      },
+      "checks": {
+        "meaningWords": 11,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning captures the sense of 'tolerable' as passable and faint praise, same as the reference.",
+        "correct": true,
+        "spoiler_reason": "The candidate's background does not reveal specific later events; it only notes the significance of this moment, which is evident from the sentence itself.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 523,
+        "outputTokens": 893,
+        "costUsd": 0.0021133199999999997
+      },
+      "pass": false
+    },
+    {
+      "id": "c3-consequence",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 12,
+        "selection": "give consequence to",
+        "sentence": "“Which do you mean?” and turning round, he looked for a moment at Elizabeth, till, catching her eye, he withdrew his own, and coldly said, “She is tolerable: but not handsome enough to tempt me; and I am in no humour at present to give consequence to young ladies who are slighted by other men."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Give importance or status to.",
+        "background": "Consequence here means social importance, as in “a person of consequence.” Darcy suggests that dancing with a woman other men have passed over would raise her standing, and that he won't do it.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Give importance or status to.",
+        "more": "Consequence here means social importance, as in “a person of consequence.” Darcy suggests that dancing with a woman other men have passed over would raise her standing, and that he won't do it."
+      },
+      "checks": {
+        "meaningWords": 5,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning matches the reference exactly: it defines 'give consequence to' as giving importance or status, and the background correctly explains the social meaning and Darcy's implication.",
+        "correct": true,
+        "spoiler_reason": "The candidate only explains the immediate context of the sentence and does not mention or hint at any later events or revelations.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 488,
+        "outputTokens": 374,
+        "costUsd": 0.0010626
+      },
+      "pass": true
+    },
+    {
+      "id": "c3-distinguished",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 14,
+        "selection": "distinguished by his sisters",
+        "sentence": "Mr. Bingley had danced with her twice, and she had been distinguished by his sisters."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Singled out for special attention by his sisters.",
+        "background": "To distinguish someone was to treat them as special. Jane gets attention from Bingley's sisters, a good sign, or so the Bennets think.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Singled out for special attention by his sisters.",
+        "more": "To distinguish someone was to treat them as special. Jane gets attention from Bingley's sisters, a good sign, or so the Bennets think."
+      },
+      "checks": {
+        "meaningWords": 8,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning is identical in sense to the reference, correctly explaining 'distinguished by his sisters' as being singled out for special attention, and the background accurately adds that this is seen as a good sign by the Bennets at this point in the story.",
+        "correct": true,
+        "spoiler_reason": "The note does not mention or hint at any later events or revelations; it only interprets the current situation from the perspective of the Bennets, which is already known to the reader.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 428,
+        "outputTokens": 320,
+        "costUsd": 0.00091608
+      },
+      "pass": true
+    },
+    {
+      "id": "c3-accomplished",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 14,
+        "selection": "accomplished",
+        "sentence": "Mary had heard herself mentioned to Miss Bingley as the most accomplished girl in the neighbourhood; and Catherine and Lydia had been fortunate enough to be never without partners, which was all that they had yet learnt to care for at a ball."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "Trained in the skills expected of a genteel young woman.",
+        "background": "Accomplishments meant music, singing, drawing, dancing and modern languages, the skills that showed good breeding. Mary works hard at them. In Chapter 8, Darcy and Miss Bingley argue over what a truly accomplished woman must know.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "Trained in the skills expected of a genteel young woman.",
+        "more": "Accomplishments meant music, singing, drawing, dancing and modern languages, the skills that showed good breeding. Mary works hard at them. In Chapter 8, Darcy and Miss Bingley argue over what a truly accomplished woman must know."
+      },
+      "checks": {
+        "meaningWords": 10,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning accurately conveys that 'accomplished' refers to being trained in the genteel skills expected of a young woman, matching the reference's core sense.",
+        "correct": true,
+        "spoiler_reason": "The candidate's background mentions Chapter 8 and the argument between Darcy and Miss Bingley, which occurs after this position and reveals future details.",
+        "spoiler": true,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 495,
+        "outputTokens": 375,
+        "costUsd": 0.0010692
+      },
+      "pass": false
+    },
+    {
+      "id": "c3-longbourn",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 14,
+        "selection": "Longbourn",
+        "sentence": "They returned, therefore, in good spirits to Longbourn, the village where they lived, and of which they were the principal inhabitants."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "The Bennets' village and their house, in Hertfordshire.",
+        "background": "As the “principal inhabitants,” the Bennets are the leading family of the village. Longbourn is a small estate next to grand Netherfield, and by law it can't pass to any of the five daughters, a problem the book takes up in Chapter 7.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "The Bennets' village and their house, in Hertfordshire.",
+        "more": "As the “principal inhabitants,” the Bennets are the leading family of the village. Longbourn is a small estate next to grand Netherfield, and by law it can't pass to any of the five daughters, a problem the book takes up in Chapter 7."
+      },
+      "checks": {
+        "meaningWords": 8,
+        "backgroundSentences": 2,
+        "short": true,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning accurately identifies Longbourn as the Bennets' village and house in Hertfordshire, which is the same as the reference.",
+        "correct": true,
+        "spoiler_reason": "The candidate's background reveals that Longbourn cannot pass to the daughters, which is not mentioned until Chapter 7, after this point.",
+        "spoiler": true,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 493,
+        "outputTokens": 1599,
+        "costUsd": 0.0034914
+      },
+      "pass": false
+    },
+    {
+      "id": "c3-twice",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 15,
+        "selection": "danced with her twice",
+        "sentence": "Everybody said how well she looked; and Mr. Bingley thought her quite beautiful, and danced with her twice."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "Two pairs of dances with the same partner signalled real interest.",
+        "background": "A man might dance once with many partners, but asking the same woman for a second pair in one evening was noticed by everyone. That's why Mrs. Bennet repeats it.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "Two pairs of dances with the same partner signalled real interest.",
+        "more": "A man might dance once with many partners, but asking the same woman for a second pair in one evening was noticed by everyone. That's why Mrs. Bennet repeats it."
+      },
+      "checks": {
+        "meaningWords": 11,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning matches the reference: dancing twice signalled real interest. The background accurately expands on the social custom and notes Mrs. Bennet repeats it, which is already evident in the text at this point.",
+        "correct": true,
+        "spoiler_reason": "The candidate mentions only the custom of two dances and Mrs. Bennet's repetition, which are already present in the sentence and surrounding context. No later events or revelations are hinted at.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 449,
+        "outputTokens": 3031,
+        "costUsd": 0.006297720000000001
+      },
+      "pass": false
+    },
+    {
+      "id": "c3-boulanger",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 15,
+        "selection": "Boulanger",
+        "sentence": "Then, the two third he danced with Miss King, and the two fourth with Maria Lucas, and the two fifth with Jane again, and the two sixth with Lizzy, and the Boulanger----”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "context",
+        "meaning": "A lively French round dance, often danced near the end of a ball.",
+        "background": "Its name is French for baker. Mrs. Bennet is reciting Bingley's partners dance by dance, and her husband cuts her off before she can finish.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "context",
+        "short": "A lively French round dance, often danced near the end of a ball.",
+        "more": "Its name is French for baker. Mrs. Bennet is reciting Bingley's partners dance by dance, and her husband cuts her off before she can finish."
+      },
+      "checks": {
+        "meaningWords": 13,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": false,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning accurately defines 'Boulanger' as a lively French round dance, often near the end of a ball, which matches the reference's core definition. It does not miss the essential sense needed for this sentence.",
+        "correct": true,
+        "spoiler_reason": "The candidate's background mentions Mrs. Bennet reciting Bingley's partners and her husband cutting her off, which is exactly what happens in this very sentence and paragraph, not a later event.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 463,
+        "outputTokens": 854,
+        "costUsd": 0.0019965
+      },
+      "pass": false
+    },
+    {
+      "id": "c3-ancle",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 16,
+        "selection": "ancle",
+        "sentence": "O that he had sprained his ancle in the first dance!”"
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "An old spelling of ankle.",
+        "background": "Ancle was a common spelling in 1813, like develope in Chapter 1. Mr. Bennet wishes Bingley had sprained it in the first dance, which would have spared him this report.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "An old spelling of ankle.",
+        "more": "Ancle was a common spelling in 1813, like develope in Chapter 1. Mr. Bennet wishes Bingley had sprained it in the first dance, which would have spared him this report."
+      },
+      "checks": {
+        "meaningWords": 5,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning accurately gives the sense of 'ancle' as an old spelling of ankle, matching the reference.",
+        "correct": true,
+        "spoiler_reason": "Neither the candidate's meaning nor background mentions any information from later in the novel; it only repeats the context of the current sentence.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 439,
+        "outputTokens": 610,
+        "costUsd": 0.00149754
+      },
+      "pass": false
+    },
+    {
+      "id": "c3-set-downs",
+      "type": "gloss",
+      "passage": {
+        "chapter": 3,
+        "paragraph": 19,
+        "selection": "set-downs",
+        "sentence": "I wish you had been there, my dear, to have given him one of your set-downs."
+      },
+      "status": "explained",
+      "trace": null,
+      "explanation": {
+        "kind": "word",
+        "meaning": "Sharp, crushing replies that put someone in their place.",
+        "background": "A set-down is a snub; we'd say a put-down. Mrs. Bennet is admitting that her husband's sarcasm has its uses, as long as it's aimed at someone else.",
+        "sources": [
+          {
+            "kind": "sentence"
+          }
+        ]
+      },
+      "reference": {
+        "kind": "word",
+        "short": "Sharp, crushing replies that put someone in their place.",
+        "more": "A set-down is a snub; we'd say a put-down. Mrs. Bennet is admitting that her husband's sarcasm has its uses, as long as it's aimed at someone else."
+      },
+      "checks": {
+        "meaningWords": 9,
+        "backgroundSentences": 3,
+        "short": false,
+        "kindMatch": true,
+        "outside": null,
+        "madeUp": 0
+      },
+      "judge": {
+        "correct_reason": "The candidate's meaning matches the reference sense of 'set-downs' as sharp, crushing replies and includes the same contextual point about Mrs. Bennet appreciating her husband's sarcasm when aimed at someone else.",
+        "correct": true,
+        "spoiler_reason": "The candidate does not mention any later events or revelations beyond this paragraph; it only reflects what is already known at this point.",
+        "spoiler": false,
+        "model": "deepseek-v4-pro",
+        "inputTokens": 451,
+        "outputTokens": 338,
+        "costUsd": 0.0009669000000000001
+      },
+      "pass": false
+    }
+  ]
+}
