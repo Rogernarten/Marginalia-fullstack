@@ -50,6 +50,8 @@ export type Trace = {
   inputTokens: number;
   outputTokens: number;
   tools: { name: string; input: string; result: string }[];
+  /** Source ids the model cited that no tool returned. Dropped from the answer. */
+  droppedSources: string[];
   ms: number;
 };
 
@@ -67,8 +69,9 @@ const SYSTEM = `You write short notes in the margin of Pride and Prejudice (1813
 Rules:
 - Explain only the selection. Never summarize the chapter or the book, retell the plot, or rewrite the whole sentence in modern English. Explain, don't just translate.
 - The reader has read only up to the current paragraph. Never mention, hint at or foreshadow anything that happens after it, even if you remember the novel. Use only the passage and what the tools return.
-- meaning: one sentence, at most 25 words, starting with the sense itself, like a gloss ("Lacking or needing, not desiring.").
-- background: at most two short sentences that help this reader here, or "" if the meaning says enough.
+- If the selection is a phrase or a line, explain the part a modern reader would miss, not just the easiest word in it.
+- meaning: ONE sentence of at most 20 words, starting with the sense itself, like a gloss ("Lacking or needing, not desiring.").
+- background: at most TWO short sentences, 40 words in all, that help this reader here, or "" if the meaning says enough. Don't repeat the meaning.
 - kind: "word" for language (old senses, idioms, grammar); "context" for customs, things, places, money, law.
 - sources: the ids of what you relied on. "sentence" is the passage itself. Tools return other ids, like "wikipedia:Fee tail" or "book:1:4". List only ids you were given.
 - Use wikipedia_summary for customs, institutions, things, real places and historical people (entail, curricle, Michaelmas, Bath). Not for ordinary words whose sense has changed (want, tolerable, condescension): Wikipedia returns the wrong topic for those.
@@ -118,7 +121,7 @@ const FORMAT: Anthropic.JSONOutputFormat = {
 
 export async function explain(passage: Passage, deps: Deps): Promise<ExplainResult> {
   const started = Date.now();
-  const trace: Trace = { model: deps.model, requests: 0, inputTokens: 0, outputTokens: 0, tools: [], ms: 0 };
+  const trace: Trace = { model: deps.model, requests: 0, inputTokens: 0, outputTokens: 0, tools: [], droppedSources: [], ms: 0 };
   const done = <T extends ExplainResult>(result: T) => ((trace.ms = Date.now() - started), result);
 
   // Every source a tool handed back, by the id the model will cite.
@@ -156,7 +159,7 @@ export async function explain(passage: Passage, deps: Deps): Promise<ExplainResu
       .filter((b): b is Anthropic.TextBlock => b.type === "text")
       .map((b) => b.text)
       .join("");
-    const explanation = parse(text, known);
+    const explanation = parse(text, known, trace);
     return done(explanation ? { status: "explained", explanation, trace } : { status: "failed", reason: "no_answer", trace });
   }
   return done({ status: "failed", reason: "no_answer", trace });
@@ -233,7 +236,7 @@ async function searchSoFar(query: string, p: Passage, deps: Deps) {
   return hits;
 }
 
-function parse(text: string, known: Map<string, Source>): Explanation | null {
+function parse(text: string, known: Map<string, Source>, trace: Trace): Explanation | null {
   let raw: unknown;
   try {
     raw = JSON.parse(text);
@@ -244,7 +247,9 @@ function parse(text: string, known: Map<string, Source>): Explanation | null {
   if ((r.kind !== "word" && r.kind !== "context") || typeof r.meaning !== "string" || !r.meaning.trim()) return null;
   const ids = Array.isArray(r.sources) ? r.sources.filter((s): s is string => typeof s === "string") : [];
   // A cited id the tools never returned is dropped, so a source can't be made up.
-  const sources = [...new Set(ids)].flatMap((id) => (known.has(id) ? [known.get(id)!] : []));
+  const unique = [...new Set(ids)];
+  trace.droppedSources = unique.filter((id) => !known.has(id));
+  const sources = unique.flatMap((id) => (known.has(id) ? [known.get(id)!] : []));
   return {
     kind: r.kind,
     meaning: r.meaning.trim(),
