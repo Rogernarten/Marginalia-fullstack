@@ -52,6 +52,8 @@ export type Trace = {
   tools: { name: string; input: string; result: string }[];
   /** Source ids the model cited that no tool returned. Dropped from the answer. */
   droppedSources: string[];
+  /** The model answered a context note without Wikipedia and was sent back to look it up. */
+  sentBack: boolean;
   ms: number;
 };
 
@@ -74,9 +76,12 @@ Rules:
 - background: at most TWO short sentences, 40 words in all, that help this reader here, or "" if the meaning says enough. Don't repeat the meaning.
 - kind: "word" for language (old senses, idioms, grammar); "context" for customs, things, places, money, law.
 - sources: the ids of what you relied on. "sentence" is the passage itself. Tools return other ids, like "wikipedia:Fee tail" or "book:1:4". List only ids you were given.
-- Use wikipedia_summary for customs, institutions, things, real places and historical people (entail, curricle, Michaelmas, Bath). Not for ordinary words whose sense has changed (want, tolerable, condescension): Wikipedia returns the wrong topic for those.
+- For a "context" note (customs, institutions, things, money, law, real places, historical people: entail, curricle, Michaelmas, Bath), always call wikipedia_summary first, with the most likely article title, and cite what it returns. If it has nothing that fits, answer without it. Don't use it for ordinary words whose sense has changed (want, tolerable, condescension): Wikipedia returns the wrong topic for those.
 - Use search_book_so_far when the selection refers back to someone or something earlier in the book, or to see how Austen uses the same word elsewhere.
 - Most selections need one tool call or none. Answer as soon as you can.`;
+
+// Sent when the model answers a "context" note without having looked it up.
+const LOOK_IT_UP = `This is a context note, so look it up first: call wikipedia_summary with the most likely article title, then answer again in the same JSON, citing the id it returns. If Wikipedia has nothing that fits, give your answer without it.`;
 
 const TOOLS: Anthropic.Tool[] = [
   {
@@ -121,7 +126,7 @@ const FORMAT: Anthropic.JSONOutputFormat = {
 
 export async function explain(passage: Passage, deps: Deps): Promise<ExplainResult> {
   const started = Date.now();
-  const trace: Trace = { model: deps.model, requests: 0, inputTokens: 0, outputTokens: 0, tools: [], droppedSources: [], ms: 0 };
+  const trace: Trace = { model: deps.model, requests: 0, inputTokens: 0, outputTokens: 0, tools: [], droppedSources: [], sentBack: false, ms: 0 };
   const done = <T extends ExplainResult>(result: T) => ((trace.ms = Date.now() - started), result);
 
   // Every source a tool handed back, by the id the model will cite.
@@ -160,6 +165,16 @@ export async function explain(passage: Passage, deps: Deps): Promise<ExplainResu
       .map((b) => b.text)
       .join("");
     const explanation = parse(text, known, trace);
+
+    // A context note must be looked up. Once: if Wikipedia has nothing, the answer stands.
+    // Needs two more requests (the lookup, then the answer), so only while they're left.
+    const lookedUp = trace.tools.some((t) => t.name === "wikipedia_summary");
+    if (explanation?.kind === "context" && !lookedUp && !trace.sentBack && i + 2 < MAX_REQUESTS) {
+      trace.sentBack = true;
+      messages.push({ role: "assistant", content: res.content });
+      messages.push({ role: "user", content: LOOK_IT_UP });
+      continue;
+    }
     return done(explanation ? { status: "explained", explanation, trace } : { status: "failed", reason: "no_answer", trace });
   }
   return done({ status: "failed", reason: "no_answer", trace });
