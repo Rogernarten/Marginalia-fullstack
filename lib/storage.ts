@@ -1,6 +1,7 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { useSyncExternalStore } from "react";
 import { normalize } from "./text";
+import type { Explanation } from "./explain/core";
 import type { WikiPage } from "./wikipedia";
 
 // Everything a reader saves lives in Supabase (three tables, see AGENTS.md) and is read and
@@ -25,6 +26,8 @@ export type Word = {
   noteId?: string;
   /** Set when saved from a Wikipedia lookup: a copy, so the notebook never has to ask again. */
   wiki?: WikiPage;
+  /** Set when saved from Explain: a copy, so the notebook never calls the model again. */
+  explanation?: Explanation;
   myNote: string;
   savedAt: string;
 };
@@ -381,6 +384,7 @@ type WordRow = {
   wiki_description: string | null;
   wiki_extract: string | null;
   wiki_url: string | null;
+  explanation: Explanation | null;
   saved_at: string;
 };
 
@@ -403,6 +407,7 @@ function toWord(r: WordRow): Word {
       r.wiki_page_id != null && r.wiki_title && r.wiki_extract && r.wiki_url
         ? { pageId: r.wiki_page_id, title: r.wiki_title, description: r.wiki_description, extract: r.wiki_extract, url: r.wiki_url }
         : undefined,
+    explanation: r.explanation ?? undefined,
     myNote: r.my_note,
     savedAt: r.saved_at,
   };
@@ -424,6 +429,8 @@ function toRow(w: Word) {
     wiki_description: w.wiki?.description ?? null,
     wiki_extract: w.wiki?.extract ?? null,
     wiki_url: w.wiki?.url ?? null,
+    // Only when there is one: other saves keep working on a database without the column yet.
+    ...(w.explanation ? { explanation: w.explanation } : {}),
     saved_at: w.savedAt,
   };
 }

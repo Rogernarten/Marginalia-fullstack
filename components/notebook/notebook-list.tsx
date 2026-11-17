@@ -9,6 +9,7 @@ import { KIND_LABEL } from "@/lib/notes/types";
 import { positionHref, removeWord, restoreWord, useSaved, type Word } from "@/lib/storage";
 import { arrivalWord, clearArrival } from "./arrival";
 import { NoteEditor } from "./note-editor";
+import { ExplanationSummary } from "./explanation-summary";
 import { WikiSummary } from "./wiki-summary";
 
 /** Words grouped by chapter, in reading order. Removing leaves an Undo in the word's place. */
@@ -152,11 +153,17 @@ function Entry({ word, onRemove }: { word: Word; onRemove: () => void }) {
         <h3 className="font-serif text-xl">{word.phrase}</h3>
         {note && <span className="eyebrow shrink-0">{KIND_LABEL[note.kind]}</span>}
         {word.wiki && <span className="eyebrow shrink-0">Wikipedia</span>}
+        {word.explanation && <span className="eyebrow shrink-0">Explained</span>}
       </div>
       {note && <p className="mt-1.5 font-serif text-[1.0625rem] leading-relaxed">{note.short}</p>}
       {word.wiki && (
         <div className="mt-1.5">
           <WikiSummary page={word.wiki} id={`word-${word.id}-wiki`} />
+        </div>
+      )}
+      {word.explanation && (
+        <div className="mt-1.5">
+          <ExplanationSummary explanation={word.explanation} />
         </div>
       )}
       <blockquote className="mt-3 border-l-2 border-rule pl-3 font-serif text-[1.0625rem] leading-relaxed text-muted">
