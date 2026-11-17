@@ -51,10 +51,16 @@ test("select a word, explain it, save it, find it in the notebook", async ({ pag
   await page.goto("/");
   await clerk.signIn({ page, emailAddress: EMAIL });
 
-  // Start clean, if an earlier run saved it.
+  // Start clean, if an earlier run saved it: wait for Supabase to delete it before leaving.
   await page.goto("/notebook");
+  await expect(page.getByRole("heading", { level: 1, name: "Notebook" })).toBeVisible();
   const remove = page.getByRole("button", { name: `Remove “${WORD}”` });
-  if (await remove.count()) await remove.click();
+  if (await remove.count()) {
+    await Promise.all([
+      page.waitForResponse((r) => r.url().includes("/rest/v1/saved_words") && r.request().method() === "DELETE"),
+      remove.click(),
+    ]);
+  }
 
   await page.goto(`/read/${CHAPTER}`);
   await select(page, WORD);
