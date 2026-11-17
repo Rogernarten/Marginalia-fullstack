@@ -124,9 +124,33 @@ from the same paragraph.
 
 ### Testing with readers
 
-Kim, Tom and Mike, the three readers from the proposal, try v1 on 17 November with one task:
-find a word or a line you don't understand, have it explained, and save it. What each of them
-did and said, and the plan for v2 that starts from it, follow here.
+On 17 November I showed v1 to Kim, Tom and Mike, the three readers from the proposal, with one
+task: find a word or a line you don't understand, have it explained, and save it. I brought
+eight hard passages from Chapters 4 to 13, where there are no hand-written hints, so every
+explanation came from AI explain: *fixing him*, *the most interesting intelligence*, *the
+regimentals of an ensign*, *in default of heirs male*, Charlotte's "Happiness in marriage is
+entirely a matter of chance", Darcy's "carelessness of opinion, and sometimes an indirect
+boast" and "My good opinion once lost is lost for ever", and Mr. Collins being "preferred" to
+a rectory. From my notes (they spoke in Chinese; translated):
+
+| | What they did and said |
+|---|---|
+| **Tom**, literature student | The passages that had confused him were clear after AI explain. *The regimentals of an ensign* he couldn't make out before; afterwards he knew exactly what it meant. |
+| **Kim**, wants to read more | She liked having the AI's reading as one source of insight among others: as a reader, she said, you can't always take in everything a classic text means. |
+| **Mike**, reads every night | Because he chooses when to ask, AI explain never broke his reading rhythm. |
+| **All three** | Recommended a harder book to try it on: Herbert Marcuse's *One-Dimensional Man*, where on your own it's easy to get lost in the long, winding sentences. |
+
+What this tells me:
+
+- **Tom's problem is the one v1 was built for, and it worked** on the kind of note that's hardest
+  to look up: a thing of the period, explained in its sentence, without leaving the page.
+- **Kim's worry from the proposal didn't come up as a problem.** She took the answer as one view,
+  not the answer, which is what "Written by AI… can be wrong" and the sources are for. Keep both.
+- **On demand is right.** Mike's habit is what works for him, and nothing interrupted it: no
+  pop-ups, nothing explained unless asked.
+- **The next difficulty is sentences, not words.** All three asked for a book that's hard because
+  of its long sentences. The evals point the same way: given a whole line, AI explain glosses one
+  word in it ("fixed", "chance") and leaves the sentence's shape to the background.
 
 ### Before shipping
 
@@ -170,15 +194,45 @@ them. **Decisions I made:**
 - Rewrite the 14 hand-written hints the judge caught with spoilers, rather than leave them.
 - The selection toolbar: after using it, the buttons above the text felt confusing, so Explain,
   Look it up and Save moved to where the words are selected.
+- The names **AI explain** and **Wiki lookup**, so a model's note isn't taken for a source.
+- Philosophy next, from the readers' request: Hegel on the shelf, and Marcuse by pasting a
+  passage, since his book is still in copyright.
 
-### Next
+## Plan for v2 (1 December)
 
-The plan for v2 comes after the readers' sessions. One direction already chosen: **a bookshelf,
-starting with Hegel's *Phenomenology of Spirit***, in J. B. Baillie's 1910 translation, *The
-Phenomenology of Mind* (public domain in the US; the modern translations aren't). Philosophy
-changes what Explain should do: a term as *this* author uses it, where in the book he defined it,
-and what this sentence does in the argument, without jumping ahead to its conclusion (the
-spoiler rule, for an argument). It needs its own eval, with references checked by hand.
+Starting from what the readers did, and what the evals still get wrong.
+
+### Fix first
+
+| What | Why |
+|---|---|
+| **Explain a whole sentence, not one word in it.** When a line is selected, say what the sentence claims and how its parts hang together (what qualifies what, "not this but that"), and gloss only the words that block it. Still never a paraphrase of the whole passage. | All three readers' next request is a book of long, winding sentences; the evals show that for a line, AI explain picks one word. |
+| **The four factual slips and the one spoiler** the evals found (the chaise's horses, who calls on a newcomer, *circumspection*, the Boulanger; naming Elizabeth as slighted too early). Try Sonnet 5.5 on context notes only, and measure it against the same 67 cases before switching. | A wrong fact in the margin costs more trust than a missing one. |
+| **Small things:** typing a Wikipedia lookup on phones (it's only in the wide margin now), "1 word" when the notebook holds a line, and whether Wiki lookup still earns its place next to AI explain, which already reads Wikipedia. | Found in the new-reader walkthrough. |
+
+### Add
+
+| What | Why |
+|---|---|
+| **Long-sentence evals.** 20 long sentences, from Austen and from Hegel, each with its structure written out by hand, graded like the others: is the structure right, does it gloss only what's needed, does it stay short, does it jump ahead. | The sentence fix needs its own measure before it ships. |
+| **A bookshelf**, starting with Hegel's *Phenomenology of Spirit* in J. B. Baillie's 1910 translation, *The Phenomenology of Mind*: public domain in the US (the modern translations aren't), with a full text on archive.org whose OCR needs cleaning (page headers, hyphenation, footnotes). Every saved word and reading place gets a book; `/books`, then `/read/[book]/[chapter]`, with today's links redirected. | The readers want to try it on harder books, and philosophy is where a sentence explained in place helps most. |
+| **AI explain for philosophy.** A term as *this* author uses it, where in the book he defined it (the book search, which never looks ahead, finds it), and what this sentence does in the argument, never jumping ahead to its conclusion: the spoiler rule, for an argument. Its own eval cases, with "jump ahead" traps. | A dictionary sense of *Geist* or *mediation* is as wrong as one of *want* in Austen. |
+| **Marcuse, without hosting the book.** *One-Dimensional Man* (1964) is still under copyright, so it can't be on the shelf. Instead, "Explain a passage": paste a sentence or two from your own copy, and the margin explains it the same way. Only what a reader saves is kept. | It's the book all three asked for, and copyright rules out the shelf. |
+
+### Wait
+
+- **Mike's daily goal and streak** (planned for this week in the proposal): the weekly goal is
+  already there, his habit wasn't disturbed, and no one asked for more this time.
+- **Kim's quiet reading mode**, until she has tried a harder book with it.
+- Still left out: a chat about the book, summaries, a phone app, book clubs.
+
+### Schedule
+
+| | |
+|---|---|
+| Nov 17–24 | Sentence explanations and their evals. Hegel's text cleaned and on the shelf. "Explain a passage" for Marcuse. |
+| Nov 24 week | No class. Kim, Tom and Mike use it for a week on Hegel or Marcuse; I watch where they stop. |
+| Dec 1 · v2 | Fixes from that week, and the evals rerun on everything. |
 
 ---
 
