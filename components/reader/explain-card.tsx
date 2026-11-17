@@ -12,6 +12,7 @@ import type { Explanation, Passage } from "@/lib/explain/core";
 import { SELECTION_MAX } from "@/lib/explain/shared";
 import { KIND_LABEL } from "@/lib/notes/types";
 import { addWord, findWord, useSaved } from "@/lib/storage";
+import { rememberExplain, returnTo } from "./explain-after-sign-in";
 
 // The server allows the model 20 seconds, plus a Wikipedia lookup or two.
 const TIMEOUT_MS = 30_000;
@@ -87,7 +88,9 @@ export function ExplainCard({
     // eslint-disable-next-line react-hooks/exhaustive-deps -- once per card: a new selection is a new card
   }, [isSignedIn, hasSelection]);
 
-  const signInHref = `/sign-in?redirect_url=${encodeURIComponent(path)}`;
+  // Come back to this paragraph, with this selection explained (Reader picks it up).
+  const back = encodeURIComponent(returnTo(path, start.paragraph));
+  const remember = () => hasSelection && rememberExplain({ chapter, paragraph: start.paragraph!, text: start.text });
   const signedOut = !isSignedIn || (result !== "loading" && result.status === "signed_out");
   const shownText = result !== "loading" && result.status === "explained" ? result.passage.selection : start.text;
   const ownNote = `/notebook/new?chapter=${chapter}&word=${encodeURIComponent(start.text)}`;
@@ -119,11 +122,20 @@ export function ExplainCard({
       ) : signedOut ? (
         <div className="mt-3">
           <p className="font-serif text-lg leading-relaxed">
-            Sign in to have words explained in the margin and keep them in your notebook.
+            Create a free account to have words explained in the margin and keep them in your notebook.
           </p>
-          <LinkButton href={signInHref} className="mt-4">
-            Sign in
-          </LinkButton>
+          <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted">
+            It takes a minute, and you&apos;ll come back right here
+            {hasSelection ? <>, with “{start.text}” explained</> : null}.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <LinkButton href={`/sign-up?redirect_url=${back}`} onClick={remember}>
+              Create an account
+            </LinkButton>
+            <LinkButton variant="secondary" href={`/sign-in?redirect_url=${back}`} onClick={remember}>
+              Sign in
+            </LinkButton>
+          </div>
         </div>
       ) : !hasSelection ? (
         <p className="mt-3 font-serif text-lg leading-relaxed">

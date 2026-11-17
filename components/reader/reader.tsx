@@ -1,5 +1,6 @@
 "use client";
 
+import { useAuth } from "@clerk/nextjs";
 import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Notice } from "@/components/ui/notice";
@@ -8,13 +9,13 @@ import { findWord, removeWord, useSaved, type Word } from "@/lib/storage";
 import { toRuns } from "@/lib/text";
 import { AddWordButton } from "./add-word-button";
 import { ChapterNav } from "./chapter-nav";
-import { ExplainButton } from "./explain-button";
+import { takeExplain } from "./explain-after-sign-in";
 import { ExplainCard } from "./explain-card";
 import { Legend } from "./legend";
 import { LookupCard } from "./lookup-card";
-import { LookUpButton } from "./look-up-button";
 import { NoteCard } from "./note-card";
 import { arrivalTarget, jumpTo, useReadingPosition, useReadingTimer } from "./reading-position";
+import { SelectionToolbar } from "./selection-toolbar";
 import { useMediaQuery } from "./use-media-query";
 import { WordCard } from "./word-card";
 
@@ -49,6 +50,7 @@ export function Reader({
   resumable?: boolean;
 }) {
   const saved = useSaved();
+  const { isSignedIn } = useAuth();
   const wide = useMediaQuery("(min-width: 64rem)");
   const [activeId, setActiveId] = useState<string | null>(null);
   const trigger = useRef<HTMLElement | null>(null);
@@ -133,6 +135,25 @@ export function Reader({
     closeRef.current = close;
   });
 
+  // Back from signing in (or up) to explain something: the same paragraph, with the card open
+  // and explaining. Taken inside the frame, so React's second mount in development gets it.
+  useEffect(() => {
+    if (!isSignedIn) return;
+    const frame = requestAnimationFrame(() => {
+      const pending = takeExplain(chapter);
+      if (!pending) return;
+      jumpTo(chapter, pending.paragraph);
+      const el = [...document.querySelectorAll<HTMLElement>(`[data-chapter="${chapter}"] [data-paragraph="${pending.paragraph}"]`)].find(
+        (e) => e.checkVisibility(),
+      );
+      setExplaining((prev) => ({ ...pending, n: (prev?.n ?? 0) + 1 }));
+      trigger.current = el ?? null;
+      setActiveId(EXPLAIN);
+      setRemoved(null);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [isSignedIn, chapter]);
+
   // Show or hide the bottom sheet, and move focus to the note's heading.
   useEffect(() => {
     const dialog = sheet.current;
@@ -197,9 +218,8 @@ export function Reader({
           ) : (
             <h2 className="font-serif text-2xl">Chapter {chapter}</h2>
           )}
-          <div className="flex flex-wrap gap-2">
-            <ExplainButton chapter={chapter} onExplain={openExplain} />
-            <LookUpButton chapter={chapter} onLookUp={openLookup} />
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <p className="font-sans text-sm text-muted">Select any words to explain them.</p>
             <AddWordButton chapter={chapter} />
           </div>
         </div>
@@ -233,6 +253,7 @@ export function Reader({
           ))}
         </div>
         <ChapterNav chapter={chapter} />
+        <SelectionToolbar chapter={chapter} onExplain={openExplain} onLookUp={openLookup} />
       </article>
 
       <aside aria-label="Notes" className="hidden lg:block">
@@ -250,11 +271,18 @@ export function Reader({
               {notes.length > 0 && <Legend className="mt-4" />}
               <p className="mt-4 font-sans text-sm leading-relaxed text-muted">
                 {notes.length > 0 ? "Not underlined? " : "Found a word you don’t know? "}
-                Select a word or a line in the text, then choose{" "}
+                Select it, or a whole line, in the text. Next to it, choose{" "}
                 <strong className="font-semibold text-ink">Explain</strong> to see what it means in that sentence,{" "}
-                <strong className="font-semibold text-ink">Look it up</strong> to see it on Wikipedia, or{" "}
-                <strong className="font-semibold text-ink">+ Add a word</strong> to save it with your own note.
+                <strong className="font-semibold text-ink">Look it up</strong> for Wikipedia, or{" "}
+                <strong className="font-semibold text-ink">Save</strong> to keep it with your own note.
               </p>
+              <Button
+                variant="quiet"
+                className="mt-2 -ml-2"
+                onClick={(e) => openLookup({ text: "", paragraph: null }, e.currentTarget)}
+              >
+                Look something up on Wikipedia
+              </Button>
               {notes.length > 0 && (
                 <p className="mt-2 font-sans text-sm text-muted">Using a keyboard? Tab to a word and press Enter.</p>
               )}
