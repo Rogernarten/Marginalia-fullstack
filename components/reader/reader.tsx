@@ -76,9 +76,9 @@ export function Reader({
     return map;
   }, [notes]);
   const activeNote = notes.find((n) => n.id === activeId) ?? null;
-  // What "Look it up" was opened with; a new count each time so the card starts fresh.
+  // What "Wiki lookup" was opened with; a new count each time so the card starts fresh.
   const [lookup, setLookup] = useState<{ text: string; paragraph: number | null; n: number } | null>(null);
-  // The same for "Explain".
+  // The same for "AI explain".
   const [explaining, setExplaining] = useState<{ text: string; paragraph: number | null; n: number } | null>(null);
   // A removed word is kept here so its card can offer Undo after it leaves the page.
   const [removed, setRemoved] = useState<Word | null>(null);
@@ -272,8 +272,8 @@ export function Reader({
               <p className="mt-4 font-sans text-sm leading-relaxed text-muted">
                 {notes.length > 0 ? "Not underlined? " : "Found a word you don’t know? "}
                 Select it, or a whole line, in the text. Next to it, choose{" "}
-                <strong className="font-semibold text-ink">Explain</strong> to see what it means in that sentence,{" "}
-                <strong className="font-semibold text-ink">Look it up</strong> for Wikipedia, or{" "}
+                <strong className="font-semibold text-ink">AI explain</strong> to see what it means in that sentence,{" "}
+                <strong className="font-semibold text-ink">Wiki lookup</strong> for its Wikipedia article, or{" "}
                 <strong className="font-semibold text-ink">Save</strong> to keep it with your own note.
               </p>
               <Button

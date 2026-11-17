@@ -2,7 +2,7 @@ import { clerk } from "@clerk/testing/playwright";
 import { expect, test, type Page } from "@playwright/test";
 
 // Project v1's core task, as a new reader does it: open a chapter, select a word, choose
-// Explain, read what it means in that sentence, save it, and find it in the notebook with
+// AI explain, read what it means in that sentence, save it, and find it in the notebook with
 // its explanation. Uses reader A (see notebook-privacy.spec.ts) and the real Claude API:
 // about $0.0005 the first time, nothing after, since the server keeps each explanation.
 
@@ -64,7 +64,7 @@ test("select a word, explain it, save it, find it in the notebook", async ({ pag
 
   await page.goto(`/read/${CHAPTER}`);
   await select(page, WORD);
-  await page.getByRole("button", { name: "Explain", exact: true }).click();
+  await page.getByRole("button", { name: "AI explain", exact: true }).click();
 
   await expect(card(page).getByRole("heading", { name: `“${WORD}”` })).toBeVisible();
   // The answer, with where it came from: here, Wikipedia's article on the entail.

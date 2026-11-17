@@ -61,6 +61,7 @@ Three tables, all in Supabase. Each row belongs to one person: `user_id` is the 
 | `wiki_description` | text, null | one line, shown first |
 | `wiki_extract` | text, null | plain-text summary, shown under "More" |
 | `wiki_url` | text, null | link back to the article (attribution) |
+| `explanation` | jsonb, null | set when saved from Explain: `{ kind, meaning, background, sources }`, at most 4000 characters ([migration](supabase/migrations/20261117190000_add_explanation_to_saved_words.sql), applied in the SQL Editor, so it isn't in `list_migrations`) |
 | `saved_at` | timestamptz, not null | `default now()` |
 
 The Wikipedia fields are a copy taken when the word is saved, so the notebook never calls
@@ -112,9 +113,23 @@ hidden. Reading position is sent at most every 10 seconds and when the tab is hi
 - Schema changes are migrations in `supabase/migrations/`, applied through the Supabase MCP.
   Name the file with the version the MCP records (`list_migrations`). Never turn off RLS or widen a policy unless the human asks for it.
 
+## Explain (Claude API)
+
+- Select words → the toolbar's **AI explain** → `POST /api/explain` → `lib/explain/server.ts`
+  (signed-in only; the selection must be in that paragraph; cached per passage with
+  `"use cache: remote"`) → `lib/explain/core.ts` (the model and its two tools).
+- `core.ts` imports nothing from Next, so the evals (`evals/run.mjs`, run with Node) test the
+  same code. Keep it that way: take what it needs from the caller.
+- The model never sees text after the reader's paragraph, and `search_book_so_far` never
+  searches ahead. Sources are only ids a tool returned; anything else is dropped.
+- The model is chosen by the evals. After changing the prompt, tools or model, run
+  `npm run eval` and compare with `evals/runs/`, and bump `VERSION` in `server.ts` so cached
+  explanations aren't served from the old prompt.
+- `ANTHROPIC_API_KEY` is server-only. `DEEPSEEK_API_KEY` is the eval judge's, local only.
+
 ## Wikipedia
 
-- Called only from our server: the reader's "Look it up" → `GET /api/lookup?q=` →
+- Called only from our server: the reader's "Wiki lookup" → `GET /api/lookup?q=` →
   `lib/wikipedia.ts` → Wikipedia. Why there: it's for signed-in readers only (so it isn't an
   open proxy), it sends a `User-Agent` (browsers can't set one), and each title is cached for
   a day for every reader (`"use cache"`, `cacheLife("days")`), so Wikipedia's rate limits are

@@ -1,15 +1,190 @@
 # Marginalia
 
-**Read *Pride and Prejudice* with a guide in the margin.** Tap a word or a detail a modern reader
-doesn't know, see what it meant in 1813, look up anything else on Wikipedia, and save it to your
-notebook. Sign in and your notebook, reading place and weekly goal follow you to any device.
+**Read *Pride and Prejudice* with a guide in the margin.** Select any word or line you don't
+understand and choose **AI explain**: the margin says what it means in that sentence, as Austen
+used it, with where that came from, and never gives away what happens next. Save it to a
+notebook that follows you to any device. Underlined words have hand-written notes too.
 
 - **Live:** https://marginalia-fullstack-eight.vercel.app
 - **Code:** https://github.com/Rogernarten/Marginalia-fullstack
 
-Design, Build, Ship · Assignment 4: Full Stack App, built on Assignment 3 (Patterns & Flows).
+Design, Build, Ship · **Project v1** (focus: AI), built on Assignment 4.
+The proposal set the core task:
 
-## What Assignment 4 added
+> A new reader signs up, opens *Pride and Prejudice*, selects a word or line they don't
+> understand, reads an explanation that fits that sentence without leaving the page, and saves
+> it to their notebook.
+
+## Project v1: AI explain in the margin
+
+### The core task, start to finish
+
+1. **Select** a word or a line in the text. A small toolbar appears next to it: **AI explain**,
+   **Wiki lookup**, **Save**.
+2. **AI explain**. Signed out, the margin offers **Create an account** and brings you back to the
+   same paragraph with the words explained. Signed in, it answers in a few seconds.
+3. **Read** it in the margin (a bottom sheet on phones): one line of meaning, up to two
+   sentences of background, and its sources: the sentence itself, a Wikipedia article, or an
+   earlier passage of the book, linked. Every answer says it was written by AI and can be wrong.
+4. **Save to notebook**. The word stays shaded in the text, and the notebook keeps the
+   explanation, so it never calls the model again.
+
+### How it works
+
+```mermaid
+flowchart LR
+  SEL["Reader selects words<br/>toolbar → AI explain"] --> API["POST /api/explain<br/>signed in?<br/>is the selection in that paragraph?"]
+  API --> CACHE{"Explained before?<br/>use cache: remote"}
+  CACHE -- yes --> CARD
+  CACHE -- no --> CORE["lib/explain/core.ts<br/>Claude Haiku 5.5"]
+  CORE -- "wikipedia_summary" --> WIKI["Wikipedia REST summary"]
+  CORE -- "search_book_so_far<br/>never past the reader" --> BOOK["public/book"]
+  CORE -- "JSON: kind, meaning,<br/>background, sources" --> CARD["Margin card"]
+  CARD -- "Save to notebook" --> DB["Supabase<br/>saved_words.explanation<br/>RLS: own rows only"]
+```
+
+| | |
+|---|---|
+| **Model** | Claude Haiku 5.5, at low effort, called only from the server ([`lib/explain/server.ts`](lib/explain/server.ts)). Chosen by the evals below: the cheapest model, and good enough on them (85% pass, every spoiler trap clean). On the first three test passages Sonnet 5.5 was no better and cost about 20 times as much ($0.030 against $0.0016). |
+| **What it gets** | The selection, its sentence, its paragraph and the two before it. Nothing after the reader's paragraph. |
+| **Tools** | `wikipedia_summary` for customs, things, places and people (entail → "Fee tail"). `search_book_so_far` for names and earlier uses of a word, from Chapter 1 to the paragraph before the reader's, never ahead. A "context" note answered without Wikipedia is sent back once to look it up. At most 4 model calls per explanation. |
+| **No spoilers** | By construction: the model never sees later text, and is told not to use what it remembers of the novel. Checked by six spoiler traps in the evals. |
+| **Sources can't be made up** | The model answers in a fixed JSON shape and cites ids the tools returned ("wikipedia:Fee tail", "book:1:10"). Any other id is dropped before the reader sees it; the evals count them (3 in 67 answers). |
+| **It explains, it doesn't read for you** | Kim's worry in the proposal ("I just ask AI, I can't be bothered to think"): it explains only the selection, briefly, and never summarizes the chapter or retells the plot. It isn't a chatbot: the server rebuilds the passage from the book, so only text that's really in that paragraph can be asked about. |
+| **Cost** | About $0.0004 per new explanation. Each passage is kept in Vercel's remote cache, so the same selection in the same paragraph calls the model once. Signed-in readers only. |
+
+### Evals
+
+[`evals/run.mjs`](evals/run.mjs) runs the same code the app runs on 67 cases: every hand-written
+hint for Chapters 1 to 3 (61), with the hint as the answer key, and six names that tempt a
+spoiler (Wickham in Chapter 15, Charlotte in Chapter 5, Mr. Darcy in Chapter 3, and others,
+[`evals/spoiler-cases.json`](evals/spoiler-cases.json)). Each property is graded on its own:
+
+| Check | How |
+|---|---|
+| **Correct** | A judge model: same sense as the hand-written hint, for this sentence |
+| **No spoiler** | The judge: nothing the reader only learns after this paragraph |
+| **Short** | Code: meaning ≤ 25 words, background ≤ 2 sentences |
+| **Outside source** | Code: "context" notes cite Wikipedia or an earlier passage |
+| **Made-up sources** | Code: cited ids no tool returned |
+
+The judge is DeepSeek V4 Pro: a different model family from the one it grades, and about $0.0015
+a case (Opus 5.5 was about $0.01). Checked before trusting it: the hand-written hints pass 58 of
+59, a useless fixed answer ("A word or phrase used in the novel.") passes 0 of 10, and on 46
+hints graded by both, it agrees with Opus 5.5 on "correct" 45 times and on "spoiler" 41. API
+errors are kept apart from wrong answers, and every case's full trace is saved in
+[`evals/runs/`](evals/runs/).
+
+**Claude Haiku 5.5, the model that ships** ([run](evals/runs/20261117-1806-claude-haiku-5-5-rescored.json)):
+
+| | |
+|---|---|
+| Pass (correct, short and spoiler-free) | **57 / 67** (85%) |
+| Correct | 53 / 61, and 6 / 6 on the spoiler traps |
+| Short | 67 / 67 |
+| No spoiler | 59 / 61, and **6 / 6 spoiler traps clean** |
+| Context notes with an outside source | 14 / 25 |
+| Made-up source ids, dropped | 3 |
+| Cost per explanation · latency | $0.00044 · median 1.9 s, 90% under 5.2 s |
+
+**What's still wrong:** four factual slips in the background (a chaise "normally drawn by one
+horse"; who calls first on a newcomer, reversed; the modern sense of *circumspection*; the
+Boulanger as the wrong kind of dance), four that miss the point of the hint (that "from the north
+of England" means new money from trade), and one real spoiler (naming Elizabeth as the slighted
+daughter before the book does). The tenth failure is the judge's mistake: it flagged a detail
+from the same paragraph.
+
+### What the evals changed
+
+| Found | Changed |
+|---|---|
+| The first run (24 cases): 4 too long, with backgrounds of three or four sentences | The prompt asks for 20 words and two sentences, 40 words in all: 61 / 61 short |
+| It almost never looked anything up: 1 of 10 context notes had an outside source | Context notes must call Wikipedia first, and are sent back once if they don't: 14 / 25 |
+| It explained only the easy word in a phrase ("fortune" in "a young man of large fortune from the north of England") | "Explain the part a modern reader would miss" |
+| My grader counted "Mrs." as the end of a sentence and failed 27 answers as too long | Fixed, and `--rescore` re-grades saved answers without calling any model |
+| The two judges, run on the hand-written hints themselves, flagged spoilers in 14 of them between them (Lydia's bonnet in Chapter 39, Pemberley in Chapter 43, where Elizabeth first sees Darcy) | All 14 rewritten with only what the reader knows so far. Re-judged: 14 / 14 correct and spoiler-free |
+| The book search cut sentences at "Mrs." and returned the reader's own paragraph | Real sentence ends; it starts from the paragraph before |
+
+### Testing the core task
+
+- [`e2e/explain.spec.ts`](e2e/explain.spec.ts): a reader opens Chapter 7, selects *entailed*,
+  explains it (with a Wikipedia source), saves it, and finds it in a freshly loaded notebook,
+  marked Explained. Signed out, `/api/explain` answers 401. It passes locally and against the
+  live site, and the Assignment 4 privacy test still passes with the new column.
+- **A new reader on the live site.** I signed up as someone new and did the core task. It worked
+  end to end, and four places were confusing:
+
+| Got stuck | Changed |
+|---|---|
+| The home page only said "Tap an underlined word"; nothing said any other words could be explained | "Stuck on anything else? Select a word or a line and choose **AI explain**" |
+| Signed out, Explain offered only "Sign in", to someone with no account | **Create an account** first, with "you'll come back right here, with '…' explained" |
+| After signing up: back at the top of the page, selection gone, card closed | Back at the same paragraph (`#p-N`) with the card open and the words explained |
+| Explain and Look it up were buttons above the text: select first, then go back up to press one | A toolbar right at the selection: above it, or below it on phones, where the phone's own menu sits above |
+| "Explain" and "Look it up" didn't say where the answer comes from: a model or Wikipedia | Renamed **AI explain** and **Wiki lookup** |
+
+### Testing with readers
+
+Kim, Tom and Mike, the three readers from the proposal, try v1 on 17 November with one task:
+find a word or a line you don't understand, have it explained, and save it. What each of them
+did and said, and the plan for v2 that starts from it, follow here.
+
+### Before shipping
+
+- **Keys:** `ANTHROPIC_API_KEY` in `.env.local` and Vercel's environment variables, never in
+  the repository (checked: no key in the git history, no `.env` file tracked).
+  [`.claude/settings.json`](.claude/settings.json) keeps agents out of `.env` files. The
+  DeepSeek key is used only by the evals, run on my machine; it isn't on Vercel.
+- **Row-level security:** the new `saved_words.explanation` column
+  ([migration](supabase/migrations/20261117190000_add_explanation_to_saved_words.sql)) is covered
+  by the existing own-rows-only policies; the privacy test passes.
+- **`/security-review`:** no high or medium findings. Next.js went from 16.4.2 to 16.4.6 for two
+  cache-leak advisories (GHSA-mfr8-8qww-v76h, GHSA-vc7v-qv4w-wrv8).
+- **Limits:** a monthly spending limit on the Claude account (Console → Limits); DeepSeek is prepaid.
+
+### Run it
+
+```bash
+npm install
+# .env.local (create it yourself; the agent can't read it):
+#   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY, CLERK_SECRET_KEY
+#   NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+#   ANTHROPIC_API_KEY                          (Explain)
+#   DEEPSEEK_API_KEY                           (the eval judge only)
+#   E2E_READER_A_EMAIL, E2E_READER_B_EMAIL     (two +clerk_test accounts, for the tests)
+npm run dev
+npm run explain -- 7 "entailed"              # one explanation in the terminal
+npm run eval                                 # all 67 cases, about $0.18
+npm run eval -- --oracle                     # check the judge on the hand-written hints
+npm run test:e2e
+```
+
+### How I worked with the agent
+
+Built by directing Claude Code in steps, with a check after each; the commit history follows
+them. **Decisions I made:**
+
+- The core task, and the riskiest part first: the explain call and its eval before any screen.
+- Haiku 5.5 over Sonnet 5.5, once the evals showed it passed.
+- DeepSeek V4 Pro as the judge, when Opus 5.5 judging became the main cost.
+- Context notes must look things up, so they have a source a reader can check.
+- Rewrite the 14 hand-written hints the judge caught with spoilers, rather than leave them.
+- The selection toolbar: after using it, the buttons above the text felt confusing, so Explain,
+  Look it up and Save moved to where the words are selected.
+
+### Next
+
+The plan for v2 comes after the readers' sessions. One direction already chosen: **a bookshelf,
+starting with Hegel's *Phenomenology of Spirit***, in J. B. Baillie's 1910 translation, *The
+Phenomenology of Mind* (public domain in the US; the modern translations aren't). Philosophy
+changes what Explain should do: a term as *this* author uses it, where in the book he defined it,
+and what this sentence does in the argument, without jumping ahead to its conclusion (the
+spoiler rule, for an argument). It needs its own eval, with references checked by hand.
+
+---
+
+## Assignment 4: accounts, data and Wikipedia
+
+_What Assignment 4 added, unchanged since. Project v1, above, builds on it._
 
 | | |
 |---|---|
@@ -20,25 +195,13 @@ Design, Build, Ship · Assignment 4: Full Stack App, built on Assignment 3 (Patt
 | **Keys** | In `.env.local` and Vercel's environment variables only. [`.claude/settings.json`](.claude/settings.json) denies the agent `Read` and `Edit` on `.env` files. The browser gets only publishable keys; the Supabase secret key isn't used at all. |
 | **Test** | [`e2e/notebook-privacy.spec.ts`](e2e/notebook-privacy.spec.ts): two readers each save a word; each notebook, loaded fresh, shows only its own. Watched it catch a broken policy: with the select policy changed to `using (true)` in the SQL Editor, it fails on "Reader A must not see reader B's word"; with the policy restored, it passes. |
 
-### One save, traced
+### One save, traced (Assignment 4)
 
 Reader taps **Save to notebook** → `lib/storage.ts` shows it at once, then asks Clerk (in the
 browser) for the session token → sends the row straight to Supabase with that token → Supabase
 checks the token against Clerk (third-party auth), fills `user_id` from its `sub`, and the insert
 policy checks it matches → 201. A Wikipedia-saved word carries a copy of the summary, so the
 notebook never calls Wikipedia again.
-
-### Run it
-
-```bash
-npm install
-# .env.local (create it yourself; the agent can't read it):
-#   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY, CLERK_SECRET_KEY
-#   NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
-#   E2E_READER_A_EMAIL, E2E_READER_B_EMAIL   (two +clerk_test accounts, for the test)
-npm run dev
-npm run test:e2e
-```
 
 ---
 

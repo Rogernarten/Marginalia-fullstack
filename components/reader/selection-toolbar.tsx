@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { SELECTION_MAX } from "@/lib/explain/shared";
 
-// Look it up (a Wikipedia title) and Save (the add-word form) take a word or a short phrase;
-// Explain takes up to a line.
+// Wiki lookup (a Wikipedia title) and Save (the add-word form) take a word or a short phrase;
+// AI explain takes up to a line.
 const SHORT_MAX = 60;
 const GAP = 8;
 // Half the toolbar's widest width, to keep it on screen.
@@ -17,7 +17,8 @@ type Picked = { text: string; paragraph: number; key: string; top: number; left:
 type Selected = { text: string; paragraph: number | null };
 
 /**
- * A small toolbar next to what the reader selects in the chapter: Explain, Look it up, Save.
+ * A small toolbar next to what the reader selects in the chapter: AI explain, Wiki lookup, Save.
+ * The labels say where each answer comes from, so a model's note isn't mistaken for a source.
  * It sits above the selection, or below it on touch screens, where the phone's own menu sits
  * above. Pressing a button keeps the selection (pointer down is cancelled), so the words stay
  * highlighted while the margin explains them. Only inside one paragraph of this chapter.
@@ -90,10 +91,10 @@ export function SelectionToolbar({
       className={`fixed z-30 flex -translate-x-1/2 gap-1 rounded-lg border border-edge bg-surface p-1 font-sans shadow-lg ${picked.above ? "-translate-y-full" : ""}`}
       style={{ top: picked.top, left: picked.left }}
     >
-      <Button onClick={() => act((el) => onExplain(selection, el))}>Explain</Button>
+      <Button onClick={() => act((el) => onExplain(selection, el))}>AI explain</Button>
       {short && (
         <Button variant="secondary" onClick={() => act((el) => onLookUp(selection, el))}>
-          Look it up
+          Wiki lookup
         </Button>
       )}
       {short && (
